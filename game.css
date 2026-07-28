@@ -1,0 +1,437 @@
+:root{--paper:#fff9e9;--ink:#403d2e;--green:#6e8e46;--dark:#435a2d;--wood:#a76f3e;--line:#d8c9a4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:var(--ink);background:#283424}.hidden{display:none!important}button{font:inherit;cursor:pointer}.game{position:relative;width:100%;height:100%;isolation:isolate}.title-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(#cfe0b9aa,#71895755),url("sprites/cat-scholar/background/garden.png") center/cover;z-index:20}.title-screen:before{content:"";position:absolute;inset:0;background:radial-gradient(circle,transparent 20%,#32402b66);z-index:-1}.title-logo{max-width:min(440px,75vw);max-height:150px;object-fit:contain;filter:drop-shadow(0 5px 2px #fff8)}.title-screen h1{margin:10px 0 4px;font:800 clamp(30px,6vw,58px) Georgia,"Microsoft YaHei",serif;color:#fff9df;text-shadow:0 4px 0 #596e3d,0 7px 15px #27341f}.title-screen p{color:#fff;font-weight:700;text-shadow:0 2px 4px #354329}.title-screen small{margin-top:18px;color:#f7f3dc}.wood-button{border:3px solid #fff1cf;border-radius:13px;padding:12px 28px;background:linear-gradient(#c48a52,#956137);box-shadow:0 5px 0 #67432a,0 8px 15px #27331e55;color:white;font-weight:900}.wood-button:active{transform:translateY(3px);box-shadow:0 2px 0 #67432a}.wood-button:disabled{filter:grayscale(1);opacity:.65}.world{position:absolute;inset:0;overflow:hidden}.world-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .2s}.vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(#28351e44,transparent 25%,transparent 65%,#17201488)}.hud{position:absolute;z-index:3;top:18px;left:18px;right:18px;display:flex;justify-content:space-between;pointer-events:none}.day-chip,.hud-money{display:flex;align-items:center;border:3px solid #fff7dc;border-radius:15px;background:#f8f1dbea;box-shadow:0 5px 15px #1d261a55}.day-chip{flex-direction:column;padding:7px 17px}.day-chip span{font-size:10px;color:#786f58}.hud-money{gap:7px;padding:7px 14px;font-size:20px}.hud-money img{width:26px;height:26px;object-fit:contain}.actor{position:absolute;z-index:2;object-fit:contain;filter:drop-shadow(0 10px 8px #232b1c55)}.frog-actor{left:49%;bottom:18%;width:min(230px,26vw);max-height:48%;transform:translateX(-50%)}.visitor-actor{right:16%;bottom:18%;width:min(170px,20vw);max-height:38%}.bubble{position:absolute;z-index:4;top:20%;left:8%;max-width:290px;padding:13px 17px;border:3px solid #fff;border-radius:17px 17px 17px 3px;background:#fff9e9ed;box-shadow:0 6px 18px #1f281b55;font-size:13px}.hotspot{position:absolute;z-index:5;border:2px solid #fff5cf;border-radius:50%;width:64px;height:64px;background:#66543ccc;box-shadow:0 5px 14px #17201488;color:#fff;font-size:20px;animation:pulse 2.5s infinite}.hotspot span{position:absolute;top:66px;left:50%;transform:translateX(-50%);white-space:nowrap;padding:3px 8px;border-radius:7px;background:#3c422dcc;font-size:11px}.hotspot i{position:absolute;right:-4px;top:-6px;padding:2px 7px;border-radius:50%;background:#c75c3e;font-style:normal}.desk{left:16%;bottom:20%}.bag{right:18%;bottom:22%}.mail{right:8%;top:36%}.shop{left:8%;top:43%}.visitor{right:24%;bottom:22%}@keyframes pulse{50%{box-shadow:0 5px 14px #17201488,0 0 0 8px #fff4b433}}.clover-field{position:absolute;inset:0;z-index:3}.clover-field button{position:absolute;border:0;background:transparent;color:#548535;font-size:37px;filter:drop-shadow(0 3px 1px #eff5c9);animation:sway 2s infinite}.clover-field button:nth-child(1){left:18%;bottom:18%}.clover-field button:nth-child(2){left:29%;bottom:12%;animation-delay:.4s}.clover-field button:nth-child(3){left:40%;bottom:19%;animation-delay:.8s}.clover-field button:nth-child(4){left:49%;bottom:11%;animation-delay:1.1s}.clover-field button.picked{display:none}@keyframes sway{50%{transform:rotate(8deg) translateY(-4px)}}.dock{position:absolute;z-index:8;left:50%;bottom:14px;display:flex;gap:7px;transform:translateX(-50%);padding:7px;border:3px solid #fff5d5;border-radius:22px;background:#f4ead2e8;box-shadow:0 8px 26px #1e271a99;backdrop-filter:blur(5px)}.dock button{position:relative;width:70px;height:63px;border:0;border-radius:14px;background:transparent;color:#5f5a46;font-size:10px;font-weight:800}.dock button:hover{background:#fff9e9}.dock img{display:block;width:34px;height:35px;margin:auto;object-fit:contain}.dock i{position:absolute;right:9px;top:5px;width:9px;height:9px;border-radius:50%;background:#cc5d3e}.dock i:empty:not(.on){display:none}.modal-shade{position:absolute;z-index:10;inset:0;background:#17201699;backdrop-filter:blur(3px)}.game-modal{position:absolute;z-index:11;left:50%;top:50%;width:min(650px,calc(100% - 30px));max-height:82vh;overflow:auto;transform:translate(-50%,-50%);padding:26px;border:7px solid #fff5d5;border-radius:22px;background:var(--paper);box-shadow:0 18px 50px #151b12aa}.game-modal:before{content:"";position:absolute;inset:7px;border:1px solid #dfcfaa;border-radius:12px;pointer-events:none}.game-modal header{position:relative;text-align:center;margin-bottom:19px}.game-modal small{color:#8c8065;letter-spacing:.15em}.game-modal h2{margin:3px 0;font:800 26px Georgia,"Microsoft YaHei",serif}.close{position:absolute;z-index:2;right:12px;top:10px;width:34px;height:34px;border:0;border-radius:50%;background:#796d53;color:white;font-size:23px}.game-modal form{position:relative;display:grid;grid-template-columns:1fr 85px 82px;gap:7px}.game-modal input,.game-modal select{min-width:0;padding:10px;border:1px solid var(--line);border-radius:9px;background:#fffdf6}.game-modal form button{border:0;border-radius:9px;background:var(--green);color:white;font-weight:800}.paper-list{position:relative;display:grid;gap:8px;margin-top:16px}.task-row{display:grid;grid-template-columns:1fr 92px 28px;align-items:center;gap:8px;padding:11px 9px;border-bottom:1px dashed #cbbd99}.task-row h3{margin:0 0 5px;font-size:14px}.task-row p{margin:0;color:#867b63;font-size:11px}.task-row>button:first-of-type{padding:7px;border:0;border-radius:8px;background:#829c5f;color:white;font-size:11px}.task-row .remove{border:0;background:transparent;color:#aa836e;font-size:18px}.empty{text-align:center;color:#948972;padding:24px}.focus-modal{text-align:center;width:min(430px,calc(100% - 30px))}.focus-modal img{height:105px;max-width:180px;object-fit:contain}.focus-modal #timer{font:700 52px Georgia,serif;color:var(--dark)}.time-pills{display:flex;justify-content:center;gap:5px;margin:10px}.time-pills button{border:0;border-radius:12px;padding:6px 9px;background:#e8dfc8;color:#716952;font-size:11px}.time-pills button.active{background:var(--green);color:white}.link-button{display:block;margin:13px auto 0;border:0;background:transparent;color:#667d49;font-weight:700;font-size:12px}.bag-layout{position:relative;display:grid;grid-template-columns:42% 1fr;align-items:center}.bag-layout>img{width:100%;max-height:240px;object-fit:contain}.supply{display:flex;justify-content:space-between;margin:8px 0;padding:9px;border-radius:8px;background:#eee5ce}.goods-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.goods-grid button{padding:12px 7px;border:1px solid var(--line);border-radius:13px;background:#fffdf7}.goods-grid img{width:100%;height:85px;object-fit:contain}.goods-grid b,.goods-grid span{display:block;font-size:12px}.goods-grid span{color:#719049}.mail-list{position:relative}.mail-card{display:flex;gap:12px;align-items:center;padding:13px;border-bottom:1px dashed var(--line)}.mail-card img{width:48px;height:48px;object-fit:contain}.mail-card p{flex:1;margin:0;font-size:13px}.mail-card button{border:0;border-radius:8px;padding:7px;background:var(--green);color:#fff}.visitor-note{position:relative;display:flex;align-items:center;gap:20px}.visitor-note img{width:150px;height:140px;object-fit:contain}.visitor-note p{line-height:1.8}.wide-modal{width:min(900px,calc(100% - 30px))}.album-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.photo{overflow:hidden;border:6px solid #fff;border-bottom-width:27px;background:#fff;box-shadow:0 3px 10px #5d503633;transform:rotate(-1deg)}.photo:nth-child(even){transform:rotate(1deg)}.photo img{width:100%;aspect-ratio:4/3;object-fit:cover}.photo b{display:block;text-align:center;margin-bottom:-21px;font-size:11px}.menu-modal{width:min(430px,calc(100% - 30px))}.menu-row{position:relative;display:flex;justify-content:space-between;width:100%;padding:14px;border:0;border-bottom:1px solid var(--line);background:transparent}.menu-row.danger{color:#a45445}.help{padding:12px;border-radius:9px;background:#eee6d2;line-height:1.7;font-size:12px}.toast{position:absolute;z-index:30;left:50%;top:12%;transform:translateX(-50%);padding:11px 20px;border:3px solid #fff3d4;border-radius:14px;background:#4d5e38e8;color:white;font-weight:800;box-shadow:0 6px 17px #18201666}
+@media(max-width:650px){.bubble{top:15%;left:5%;max-width:220px}.frog-actor{width:36vw;bottom:21%}.visitor-actor{width:28vw}.hotspot{width:52px;height:52px}.hotspot span{top:54px}.desk{left:10%;bottom:27%}.bag{right:11%;bottom:28%}.dock{bottom:7px}.dock button{width:54px}.game-modal{padding:20px 14px}.game-modal form{grid-template-columns:1fr 72px}.game-modal form button{grid-column:1/-1;padding:9px}.bag-layout{grid-template-columns:1fr}.bag-layout>img{height:130px}.goods-grid,.album-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* 精灵图裁切与按原图比例建立的场景舞台 */
+.world{inset:auto;left:50%;top:0;bottom:0;width:min(100%,calc(100vh * .675));transform:translateX(-50%);background:#a9b7b8;box-shadow:0 0 50px #10160f}.world.garden-scene{width:min(100%,calc(100vh * 1.012))}.world-bg{object-fit:fill}.actor{object-fit:initial}.sprite{background-repeat:no-repeat}.frog-actor{left:54%;bottom:31%;max-height:none}.visitor-actor{right:18%;bottom:27%;max-height:none}.home-prepare{width:clamp(105px,21vh,190px);aspect-ratio:253.33/154;background-image:url("sprites/cat-scholar/imported/frog-textures/01_Home/sitaku_ie.png");background-size:300% 200%;animation:threeFrames 1.25s steps(2) infinite}.reading-sprite{width:150px;aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/Fucat/cat_read.png");background-size:300% 100%;animation:threeFrames 1.1s steps(2) infinite}.garden-frog{width:clamp(90px,17vh,150px);aspect-ratio:132.33/139;background-image:url("sprites/cat-scholar/imported/frog-textures/02_Garden/kaeru_niwa.png");background-size:300% 100%;animation:threeFrames 1.2s steps(2) infinite}.snail-sprite{width:clamp(86px,16vh,145px);aspect-ratio:131.5/136.33;background-image:url("sprites/cat-scholar/imported/frog-textures/02_Garden/katatsumuri_niwa.png");background-size:400% 300%;animation:fourFrames 1.6s steps(3) infinite}.focus-frog{margin:8px auto}.visitor-preview{flex:0 0 auto}@keyframes threeFrames{to{background-position:100% 0}}@keyframes fourFrames{to{background-position:100% 0}}
+@media(max-width:650px){.frog-actor{width:clamp(90px,20vh,145px);bottom:31%}.visitor-actor{width:clamp(75px,14vh,115px);bottom:27%}}
+
+/* 庭院植物使用原始素材，不使用字体里的四叶草字符。 */
+.clover-field button{width:clamp(25px,4.4vh,42px);height:clamp(42px,7.4vh,70px);padding:0;background-color:transparent;background-position:center bottom;background-repeat:no-repeat;background-size:contain;font-size:0;transform-origin:50% 100%;filter:drop-shadow(0 3px 2px #38512655);animation:cloverSway 2.4s ease-in-out infinite}.clover-field .clover-a{background-image:url("sprites/cat-scholar/original-icons/clover_young.png")}.clover-field .clover-b{background-image:url("sprites/cat-scholar/original-icons/clover_mature.png")}.clover-field .clover-rare{background-image:url("sprites/cat-scholar/original-icons/clover_rare.png")}.clover-field button:nth-child(1){transform:scale(.82)}.clover-field button:nth-child(2){transform:scale(.94);animation-delay:.35s}.clover-field button:nth-child(3){transform:scale(1.05);animation-delay:.7s}.clover-field button:nth-child(4){transform:scale(.9);animation-delay:1.05s}@keyframes cloverSway{0%,100%{rotate:-2deg}50%{rotate:3deg}}
+
+/* 场景落点校准：草长在庭院左侧圆形土地内，室内妙脆角喵坐在左侧地面。 */
+.frog-actor.home-chair{left:74%;bottom:34%;width:clamp(72px,11.5vh,108px);aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/Fucat/cat_read.png");background-size:300% 100%;animation:threeFrames 1.1s steps(2) infinite}.frog-actor.garden-frog{left:106%;bottom:42%}.visitor-actor{right:auto;left:103%;bottom:27%;transform:translateX(-50%)}.clover-field button:nth-child(1){left:11%;bottom:34%;z-index:2}.clover-field button:nth-child(2){left:19%;bottom:29%;z-index:5}.clover-field button:nth-child(3){left:28%;bottom:36%;z-index:2}.clover-field button:nth-child(4){left:38%;bottom:30%;z-index:6}.clover-field button:nth-child(5){left:47%;bottom:35%;z-index:3;transform:scale(.78)}.clover-field button:nth-child(6){left:15%;bottom:40%;z-index:1;transform:scale(.72)}.clover-field button:nth-child(7){left:24%;bottom:33%;z-index:4;transform:scale(1.08)}.clover-field button:nth-child(8){left:33%;bottom:42%;z-index:1;transform:scale(.7)}.clover-field button:nth-child(9){left:42%;bottom:38%;z-index:2;transform:scale(.84)}.clover-field button:nth-child(10){left:51%;bottom:28%;z-index:7;transform:scale(1.04)}.clover-field button:nth-child(11){left:31%;bottom:27%;z-index:8;transform:scale(1.12)}.clover-field button:nth-child(12){left:20%;bottom:37%;z-index:3;transform:scale(.88)}
+@media(max-width:650px){.frog-actor.home-chair{left:74%;bottom:34%;width:clamp(66px,11vh,92px)}.frog-actor.garden-frog{left:106%;bottom:42%}.visitor-actor{right:auto;left:103%;bottom:27%;transform:translateX(-50%)}}
+
+/* 房屋和庭院共用同一竖屏窗口；庭院宽图通过整体横向平移浏览。 */
+.world.garden-scene{width:min(100%,calc(100vh * .675));--pan-x:0px;cursor:grab}.world.garden-scene.dragging{cursor:grabbing}.garden-scene .world-bg{width:150%;max-width:none;transform:translateX(var(--pan-x));transition:none}.garden-scene .frog-actor{transform:translateX(calc(-50% + var(--pan-x)))}.garden-scene .visitor-actor,.garden-scene .clover-field button,.garden-scene .hotspot.mail,.garden-scene .hotspot.house-door,.garden-scene .hotspot.visitor{translate:var(--pan-x) 0}.pan-control{position:absolute;z-index:7;top:48%;width:38px;height:62px;border:2px solid #fff3d1;background:#425437aa;color:white;font-size:36px;line-height:40px;box-shadow:0 5px 14px #18201666}.pan-left{left:5px;border-radius:0 18px 18px 0}.pan-right{right:5px;border-radius:18px 0 0 18px}.drag-hint{position:absolute;z-index:7;left:50%;bottom:91px;transform:translateX(-50%);padding:5px 11px;border-radius:12px;background:#3d4939aa;color:#fff;font-size:10px;pointer-events:none;animation:hintFade 4s forwards}@keyframes hintFade{0%,65%{opacity:1}100%{opacity:0}}
+
+.garden-scene .hotspot.visitor{right:auto;left:109%;bottom:30%}
+
+/* 邮箱交互贴合背景中的红色邮筒，不再显示额外的圆形按钮。 */
+.garden-scene .hotspot.mail{left:126%;right:auto;top:47%;bottom:auto;width:17%;height:17%;border:0;border-radius:12px;background:transparent;box-shadow:none;animation:none}.garden-scene .hotspot.mail span{display:none}.garden-scene .hotspot.mail:hover,.garden-scene .hotspot.mail:focus-visible{background:#fff4b31c;outline:2px dashed #fff2bd99;outline-offset:-3px}.garden-scene .hotspot.mail i{right:4px;top:2px;box-shadow:0 2px 6px #49271f88}
+
+/* 石屋木门返回小屋；商店使用底部固定导航。 */
+.garden-scene .hotspot.house-door{left:114%;right:auto;top:42%;bottom:auto;width:13%;height:17%;border:0;border-radius:45% 45% 12px 12px;background:transparent;box-shadow:none;animation:none}.garden-scene .hotspot.house-door span{display:none}.garden-scene .hotspot.house-door:hover,.garden-scene .hotspot.house-door:focus-visible{background:#fff0a61a;outline:2px dashed #fff0b699;outline-offset:-3px}
+
+/* 完整邮箱素材：标题、寄件人、奖励、领取、全部领取、通知与发送。 */
+.garden-scene .hotspot.mail i{width:48px;height:59px;padding:0;border-radius:0;background:transparent;box-shadow:none}.garden-scene .hotspot.mail i img{display:block;width:100%;height:100%;object-fit:contain}.mail-modal header{height:66px;margin-bottom:3px}.mail-title{width:190px;height:59px;object-fit:contain}.mail-toolbar{position:relative;display:flex;align-items:center;justify-content:space-between;padding:5px 6px 10px;border-bottom:1px solid var(--line);color:#8a7d62;font-size:12px}.mail-toolbar button,.mail-reply button{border:0;background:transparent;padding:0}.mail-toolbar img{display:block;width:143px;height:35px;object-fit:contain}.mail-card{min-height:86px}.mail-card .sender-icon{width:62px;height:66px}.mail-card .mail-body{flex:1}.mail-card .mail-body p{margin:0 0 7px}.mail-reward{display:flex;align-items:center;gap:6px;color:#6d844c;font-size:12px;font-weight:800}.mail-reward img{width:34px!important;height:34px!important}.mail-card .receive-button{padding:0;background:transparent}.mail-card .receive-button img{width:91px;height:35px;object-fit:contain}.mail-reply{position:relative;display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:11px 14px;border-radius:12px;background:#eee5ce}.mail-reply p{margin:0;color:#776e59;font-size:12px}.mail-reply p b,.mail-reply p span{display:block}.mail-reply p span{margin-top:4px;color:#9a8e73;font-size:10px}.mail-reply button.unavailable{filter:grayscale(1);opacity:.48}.mail-reply img{display:block;width:84px;height:49px;object-fit:contain}
+
+@font-face{font-family:"MPlus2c";src:url("sprites/cat-scholar/imported/fonts/mplus-2c-regular.ttf") format("truetype");font-weight:400;font-display:swap}@font-face{font-family:"MPlus2c";src:url("sprites/cat-scholar/imported/fonts/mplus-2c-medium.ttf") format("truetype");font-weight:500;font-display:swap}@font-face{font-family:"MPlus2c";src:url("sprites/cat-scholar/imported/fonts/mplus-2c-bold.ttf") format("truetype");font-weight:700;font-display:swap}.mail-modal{font-family:"MPlus2c","Microsoft YaHei",sans-serif;letter-spacing:.015em}.mail-modal small,.mail-toolbar{font-weight:500}.mail-modal .mail-card{align-items:center;gap:14px;padding:10px 8px}.mail-modal .sender-icon{flex:0 0 58px;width:58px;height:58px;object-fit:contain}.mail-modal .mail-body{min-width:0;padding-top:1px}.mail-modal .mail-body p{color:#555846;font-size:13px;font-weight:500;line-height:1.65}.mail-modal .mail-reward{height:32px;gap:7px;font-size:12px;font-weight:700;line-height:32px}.mail-modal .mail-reward img{flex:0 0 30px;width:30px!important;height:30px!important;object-fit:contain}.mail-modal .receive-button{flex:0 0 91px;display:flex;align-items:center;justify-content:center}.mail-modal .receive-button img{display:block}.mail-modal .mail-reply b{font-weight:700}.mail-modal button{font-family:inherit}
+@font-face{font-family:"MPlus2c";src:url("sprites/cat-scholar/imported/fonts/mplus-2c-heavy.ttf") format("truetype");font-weight:800;font-display:swap}
+
+/* HUD 使用素材内的 MPlus 2c 字体；保留真实文字，不使用文字图片。 */
+.day-chip,.hud-money{font-family:"MPlus2c","Microsoft YaHei",sans-serif}.day-chip b{color:#403d2e;font-size:20px;font-weight:800;line-height:1.1;letter-spacing:.025em}.day-chip span{margin-top:3px;color:#625e4c;font-size:11px;font-weight:500;line-height:1.1;letter-spacing:.04em}.hud-money b{color:#403d2e;font-size:25px;font-weight:800;line-height:1}
+
+.mail-modal>header{display:flex;align-items:center;justify-content:center;height:64px;margin:0 42px 5px}.mail-modal>header small{display:none}.mail-modal .mail-title{display:block;width:190px;height:59px;margin:0;object-fit:contain}
+
+/* 访客人物图集与访客弹窗 */
+.visitor-actor{padding:0;border:0;background-color:transparent;animation-duration:1.6s}.turtle-sprite{width:clamp(145px,25vh,230px);aspect-ratio:265.6/155;background-image:url("sprites/cat-scholar/imported/frog-textures/02_Garden/isigame_niwa.png");background-size:500% 200%;animation:turtleFrames 1.8s steps(2) infinite}.bee-sprite{width:clamp(105px,19vh,175px);aspect-ratio:194.5/206;background-image:url("sprites/cat-scholar/imported/frog-textures/02_Garden/mitsubati_niwa.png");background-size:600% 100%;animation:beeFrames 1s steps(5) infinite}@keyframes turtleFrames{to{background-position:50% 0}}@keyframes beeFrames{to{background-position:100% 0}}.visitor-modal{font-family:"MPlus2c","Microsoft YaHei",sans-serif}.visitor-modal h2{font-family:"MPlus2c","Microsoft YaHei",sans-serif;font-weight:700}.visitor-note>div:last-child{flex:1}.visitor-note p{margin:0 0 8px;font-size:14px;font-weight:500}.visitor-note span{color:#78845d;font-size:12px;font-weight:700}.visitor-actions{position:relative;display:flex;justify-content:center;gap:10px;margin-top:18px}.visitor-actions>button:first-child{padding:11px 18px;border:1px solid var(--line);border-radius:12px;background:#fffdf6;color:#66764d;font-weight:700}.visitor-result{text-align:center;color:#8f8268;font-size:11px}.visitor-modal.claimed .visitor-actions{filter:grayscale(1);opacity:.5;pointer-events:none}
+
+.clover-field{pointer-events:none}.clover-field button{pointer-events:auto}.visitor-actor{z-index:5;cursor:pointer}.visitor-actor:hover,.visitor-actor:focus-visible{filter:drop-shadow(0 0 7px #fff3b8) drop-shadow(0 7px 6px #232b1c55);outline:none}.garden-scene .clover-field button{translate:calc(-50% + var(--pan-x) + var(--soil-dx,0px)) var(--soil-dy,0px)}
+
+.clover-field button{left:var(--clover-x)!important;bottom:var(--clover-y)!important;z-index:var(--clover-z)!important;transform:scale(var(--clover-scale))!important;animation-delay:var(--clover-delay)!important}
+
+/* 显式帧区间：保证图集的最后一帧也拥有完整显示时间。 */
+.home-prepare,.reading-sprite,.garden-frog{animation-name:threeFrameHold;animation-timing-function:linear}.snail-sprite{animation-name:fourFrameHold;animation-timing-function:linear}.turtle-sprite{animation-name:turtleFrameHold;animation-timing-function:linear}.bee-sprite{animation-name:beeFrameHold;animation-duration:1.2s;animation-timing-function:linear}@keyframes threeFrameHold{0%,32.99%{background-position:0 0}33%,65.99%{background-position:50% 0}66%,100%{background-position:100% 0}}@keyframes fourFrameHold{0%,24.99%{background-position:0 0}25%,49.99%{background-position:33.333% 0}50%,74.99%{background-position:66.667% 0}75%,100%{background-position:100% 0}}@keyframes turtleFrameHold{0%,32.99%{background-position:0 0}33%,65.99%{background-position:25% 0}66%,100%{background-position:50% 0}}@keyframes beeFrameHold{0%,16.65%{background-position:0 0}16.66%,33.32%{background-position:20% 0}33.33%,49.99%{background-position:40% 0}50%,66.65%{background-position:60% 0}66.66%,83.32%{background-position:80% 0}83.33%,100%{background-position:100% 0}}
+
+/* 蜗牛图集有效帧：第一行 3 帧、第二行 4 帧、第三行 2 帧。 */
+.snail-sprite{animation-name:snailNineFrames;animation-duration:3.6s;animation-timing-function:linear}@keyframes snailNineFrames{0%,11.10%{background-position:0 0}11.11%,22.21%{background-position:33.333% 0}22.22%,33.32%{background-position:66.667% 0}33.33%,44.43%{background-position:0 50%}44.44%,55.54%{background-position:33.333% 50%}55.55%,66.65%{background-position:66.667% 50%}66.66%,77.76%{background-position:100% 50%}77.77%,88.87%{background-position:0 100%}88.88%,100%{background-position:33.333% 100%}}
+
+/* 图集解码完成前停在首帧，避免首次刷新时透明闪烁。 */
+.sprite{animation-play-state:paused!important;background-position:0 0}.sprites-ready .sprite{animation-play-state:running!important}
+
+/* 蜗牛改用 9 张整数像素裁切帧，彻底避开不规则图集的透明采样。 */
+.snail-sprite{background-size:100% 100%;background-position:0 0;animation-name:snailCroppedFrames;animation-duration:3.6s;animation-timing-function:linear}@keyframes snailCroppedFrames{0%,11.10%{background-image:url("sprites/cat-scholar/imported/snail/snail_01.png")}11.11%,22.21%{background-image:url("sprites/cat-scholar/imported/snail/snail_02.png")}22.22%,33.32%{background-image:url("sprites/cat-scholar/imported/snail/snail_03.png")}33.33%,44.43%{background-image:url("sprites/cat-scholar/imported/snail/snail_04.png")}44.44%,55.54%{background-image:url("sprites/cat-scholar/imported/snail/snail_05.png")}55.55%,66.65%{background-image:url("sprites/cat-scholar/imported/snail/snail_06.png")}66.66%,77.76%{background-image:url("sprites/cat-scholar/imported/snail/snail_07.png")}77.77%,88.87%{background-image:url("sprites/cat-scholar/imported/snail/snail_08.png")}88.88%,100%{background-image:url("sprites/cat-scholar/imported/snail/snail_09.png")}}
+
+/* 单纹理横向图集：1188 = 9 × 132，不切换图片且没有小数格。 */
+.snail-sprite{background-image:url("sprites/cat-scholar/imported/snail/snail_strip.png");background-size:900% 100%;animation-name:snailStripFrames;animation-duration:3.6s;animation-timing-function:linear}@keyframes snailStripFrames{0%,11.10%{background-position:0 0}11.11%,22.21%{background-position:12.5% 0}22.22%,33.32%{background-position:25% 0}33.33%,44.43%{background-position:37.5% 0}44.44%,55.54%{background-position:50% 0}55.55%,66.65%{background-position:62.5% 0}66.66%,77.76%{background-position:75% 0}77.77%,88.87%{background-position:87.5% 0}88.88%,100%{background-position:100% 0}}
+
+/* 角色动画使用乒乓循环，末帧倒序返回首帧，避免姿势突跳。 */
+.home-prepare,.reading-sprite,.garden-frog,.snail-sprite,.turtle-sprite,.bee-sprite{animation-direction:alternate}
+
+/* 乒乓播放会使完整周期翻倍，因此缩短单程时长。 */
+.home-prepare{animation-duration:.75s}.reading-sprite{animation-duration:.7s}.garden-frog{animation-duration:.75s}.snail-sprite{animation-duration:1.8s}.turtle-sprite{animation-duration:1.1s}.bee-sprite{animation-duration:.7s}
+
+/* 底部 BAR 默认收起，触碰画面底边后弹出。 */
+.dock-trigger{position:absolute;z-index:8;left:12%;right:12%;bottom:0;height:72px;display:flex;align-items:flex-end;justify-content:center;color:#fff9dc;cursor:pointer}.dock-trigger span{margin-bottom:2px;padding:0 18px 2px;border-radius:12px 12px 0 0;background:#4b563dcc;font-size:12px;transition:opacity .2s}.dock{opacity:0;pointer-events:none;transform:translate(-50%,calc(100% + 24px));transition:transform .25s ease-out,opacity .18s ease-out}.dock-trigger:hover+.dock,.dock-trigger:focus+.dock,.dock:hover,.dock:focus-within,.dock.dock-open{opacity:1;pointer-events:auto;transform:translate(-50%,0)}.dock-trigger:hover span,.dock:focus-within~.dock-trigger span{opacity:0}
+@media(hover:none){.dock-trigger{height:82px}.dock-trigger:active+.dock{opacity:1;pointer-events:auto;transform:translate(-50%,0)}}
+
+.test-tools{position:relative;margin:12px 0;padding:13px;border:1px dashed #b9aa82;border-radius:12px;background:#f1ead7}.test-tools>div{display:grid;grid-template-columns:1fr 1fr;gap:8px}.test-tools button{padding:10px;border:1px solid #cabc96;border-radius:9px;background:#fffaf0;color:#617449;font-weight:700}.test-tools p{margin:9px 0 0;text-align:center;color:#8a7f68;font-size:11px}
+
+/* 庭院圆木台烛台的火焰，随宽场景一起横向移动。 */
+.garden-scene .candle-light{left:55%;bottom:35.2%;width:23px;aspect-ratio:33.333/45;transform:translateX(-50%);translate:var(--pan-x) 0;filter:drop-shadow(0 0 4px #ffc34c) drop-shadow(0 0 9px #ff9a37)}.garden-scene .candle-light:after{width:68px;height:76px;background:radial-gradient(circle,#ffc86632,transparent 68%)}
+
+/* 火焰属于小屋圆木桌；庭院不额外叠加火焰。 */
+.candle-light{left:55%;bottom:35.2%;width:23px;aspect-ratio:33.333/45;transform:translateX(-50%);filter:drop-shadow(0 0 4px #ffc34c) drop-shadow(0 0 9px #ff9a37)}.candle-light:after{width:68px;height:76px;background:radial-gradient(circle,#ffc86632,transparent 68%)}.garden-scene .candle-light{display:none!important}
+
+/* 早晨、午后、傍晚的场景光照 */
+.time-tint{position:absolute;z-index:1;inset:0;pointer-events:none;transition:background .8s ease}.world-bg{transition:filter .8s ease,opacity .2s}.time-morning .world-bg{filter:brightness(1.07) saturate(1.06)}.time-morning .time-tint{background:linear-gradient(135deg,#fff6bd22,transparent 45%,#b7e9ff12)}.time-afternoon .world-bg{filter:brightness(1.01) saturate(1.03) sepia(.04)}.time-afternoon .time-tint{background:linear-gradient(145deg,transparent 45%,#ffc87a16)}.time-evening .world-bg{filter:brightness(.72) saturate(.9) sepia(.12)}.time-evening .time-tint{background:linear-gradient(160deg,#36456555,#bd704028 55%,#302b394d)}.time-evening .actor,.time-evening .clover-field{filter:brightness(.82) saturate(.9)}.candle-light{position:absolute;z-index:3;left:63.1%;bottom:10.7%;width:28px;aspect-ratio:34.333/45;transform:translateX(-50%);background-image:url("sprites/cat-scholar/imported/frog-textures/01_Home/hi_rousoku.png");background-size:300% 100%;animation:threeFrameHold .65s linear infinite alternate;filter:drop-shadow(0 0 5px #ffc34c) drop-shadow(0 0 11px #ff9a37)}.candle-light:after{content:"";position:absolute;left:50%;top:55%;width:82px;height:92px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#ffc86638,transparent 68%);pointer-events:none}
+
+/* 妙脆角喵数学随想对话框 */
+.frog-actor{padding:0;border:0;background-color:transparent;cursor:pointer}.garden-frog:hover,.garden-frog:focus-visible{filter:drop-shadow(0 0 7px #fff2a5) drop-shadow(0 7px 6px #232b1c55);outline:none}.bubble{border:3px solid #fff;background:#fff9e9ed;color:var(--ink);font-family:"MPlus2c","Microsoft YaHei",sans-serif;text-align:left;line-height:1.7;cursor:pointer;transition:opacity .7s ease,transform .7s ease}.garden-scene .bubble{left:auto;right:7%;top:18%;max-width:300px}.bubble:after{content:"点击继续";display:block;margin-top:4px;text-align:right;color:#9a9079;font-size:9px}.bubble.fading{opacity:0;transform:translateY(7px) scale(.98);pointer-events:none}.bubble.bubble-hidden{display:none}.bubble.dialogue-open{animation:bubbleAppear .25s ease-out}.bubble.dialogue-end:after{content:"点击结束"}@keyframes bubbleAppear{from{opacity:0;transform:translateY(5px) scale(.97)}to{opacity:1;transform:none}}.world .bubble.actor-bubble{right:auto;width:min(300px,calc(100% - 24px));max-width:none;transform:translate(-50%,-100%);transform-origin:50% 100%}.world .bubble.actor-bubble:before{content:"";position:absolute;left:50%;bottom:-9px;width:13px;height:13px;border-right:3px solid #fff;border-bottom:3px solid #fff;background:#fff9e9;transform:translateX(-50%) rotate(45deg)}.world .bubble.actor-bubble.dialogue-open{animation:actorBubbleAppear .25s ease-out}.world .bubble.actor-bubble.fading{transform:translate(-50%,-100%) translateY(7px) scale(.98)}@keyframes actorBubbleAppear{from{opacity:0;transform:translate(-50%,-100%) translateY(5px) scale(.97)}to{opacity:1;transform:translate(-50%,-100%)}}
+
+/* 最终烛火落点：小屋圆木桌中央烛台，覆盖前面的旧落地灯定位。 */
+.world:not(.garden-scene) .candle-light{left:53.5%;bottom:42.2%;width:20px;aspect-ratio:33.333/45;transform:translateX(-50%);filter:drop-shadow(0 0 4px #ffc34c) drop-shadow(0 0 9px #ff9a37)}.world:not(.garden-scene) .candle-light:after{width:62px;height:68px;background:radial-gradient(circle,#ffc86632,transparent 68%)}.world.garden-scene .candle-light{display:none!important}
+
+/* 小屋傍晚有两处独立火焰：底部落地灯与圆木桌烛台。 */
+.world:not(.garden-scene) .floor-candle{left:63.1%;bottom:10.7%;width:28px;aspect-ratio:33.333/45;transform:translateX(-50%);filter:drop-shadow(0 0 5px #ffc34c) drop-shadow(0 0 11px #ff9a37)}.world:not(.garden-scene) .floor-candle:after{width:82px;height:92px;background:radial-gradient(circle,#ffc86638,transparent 68%)}.table-candle{display:none}.time-evening:not(.garden-scene) .table-candle{display:block;left:56.5%;bottom:36.2%;width:20px;aspect-ratio:33.333/45;transform:translateX(-50%);filter:drop-shadow(0 0 4px #ffc34c) drop-shadow(0 0 9px #ff9a37)}.time-evening:not(.garden-scene) .table-candle:after{width:62px;height:68px;background:radial-gradient(circle,#ffc86632,transparent 68%)}.garden-scene .floor-candle,.garden-scene .table-candle{display:none!important}
+
+/* 所有弹窗限制在竖屏游戏舞台内，不覆盖两侧留空区域。 */
+.game{--stage-width:min(100vw,calc(100vh * .675))}.modal-shade{inset:auto;left:50%;top:0;bottom:0;width:var(--stage-width);transform:translateX(-50%);border-left:1px solid #ffffff12;border-right:1px solid #ffffff12}.game-modal,.wide-modal{width:min(650px,calc(var(--stage-width) - 28px));max-width:calc(var(--stage-width) - 28px);max-height:84vh;overscroll-behavior:contain}.wide-modal{width:calc(var(--stage-width) - 28px)}.mail-modal{width:calc(var(--stage-width) - 28px)}
+@media(max-width:650px){.game-modal,.wide-modal,.mail-modal{width:calc(var(--stage-width) - 16px);max-width:calc(var(--stage-width) - 16px);max-height:88vh}.mail-modal .mail-card{gap:8px}.mail-modal .sender-icon{flex-basis:48px;width:48px;height:48px}.mail-modal .receive-button{flex-basis:76px}.mail-modal .receive-button img{width:76px;height:auto}.mail-modal .mail-body p{font-size:12px}.mail-toolbar img{width:125px}.album-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* 傍晚小屋：读书妙脆角喵逐渐打盹，使用 inemuri_ie 的 8 个有效帧。 */
+.time-evening .home-chair{width:clamp(74px,12vh,112px);aspect-ratio:106/105;background-image:url("sprites/cat-scholar/characters/Fucat/cat_read.png");background-size:800% 100%;animation-name:dozeEightFrames;animation-duration:2.4s;animation-timing-function:linear;animation-direction:alternate}@keyframes dozeEightFrames{0%,12.49%{background-position:0 0}12.5%,24.99%{background-position:14.286% 0}25%,37.49%{background-position:28.571% 0}37.5%,49.99%{background-position:42.857% 0}50%,62.49%{background-position:57.143% 0}62.5%,74.99%{background-position:71.429% 0}75%,87.49%{background-position:85.714% 0}87.5%,100%{background-position:100% 0}}
+
+/* 任务入口改为点击小屋妙脆角喵，隐藏旧的左下角圆形热点。 */
+.hotspot.desk{display:none!important}
+
+/* 小屋木桌：点击后按当前时段播放吃饭动画，正序与倒序组成一轮，共三轮。 */
+.meal-frog{left:67%;bottom:33%;width:clamp(125px,22vh,175px);aspect-ratio:159/115;background-position:0 0;animation-duration:.62s;animation-timing-function:steps(1,end);animation-direction:alternate;animation-iteration-count:6;filter:drop-shadow(0 8px 6px #232b1c55)}.meal-morning{background-image:url("sprites/cat-scholar/characters/Fucat/cat_eat.png");background-size:500% 100%;animation-name:mealFiveFrames}.meal-afternoon{background-image:url("sprites/cat-scholar/characters/Fucat/cat_eat.png");background-size:400% 100%;animation-name:mealFourFrames}.meal-evening{background-image:url("sprites/cat-scholar/characters/Fucat/cat_eat.png");background-size:300% 100%;animation-name:mealThreeFrames}@keyframes mealFiveFrames{0%{background-position:0 0}20%{background-position:25% 0}40%{background-position:50% 0}60%{background-position:75% 0}80%,100%{background-position:100% 0}}@keyframes mealFourFrames{0%{background-position:0 0}25%{background-position:33.333% 0}50%{background-position:66.667% 0}75%,100%{background-position:100% 0}}@keyframes mealThreeFrames{0%{background-position:0 0}33.333%{background-position:50% 0}66.667%,100%{background-position:100% 0}}.time-evening .meal-frog{width:clamp(125px,22vh,175px)}
+
+/* 以读书妙脆角喵的可见体型为基准，统一场景角色比例。 */
+.frog-actor.garden-frog{width:clamp(66px,11vh,96px)}
+.frog-actor.meal-frog,.time-evening .frog-actor.meal-frog{width:clamp(105px,17vh,145px)}
+.visitor-actor.snail-sprite{width:clamp(66px,11vh,96px)}
+.visitor-actor.bee-sprite{width:clamp(66px,11vh,96px)}
+.visitor-actor.turtle-sprite{width:clamp(100px,17vh,145px)}
+
+/* 小屋两种状态同步下移，切换时保持落脚位置一致。 */
+.frog-actor.home-chair{bottom:32%;width:clamp(68px,11vh,102px)}
+.frog-actor.meal-frog,.time-evening .frog-actor.meal-frog{bottom:31%;width:clamp(68px,11vh,102px)}
+
+/* 木架上的帽子代替旧旅行袋圆形按钮，点击帽子打开旅行袋窗口。 */
+
+/* 帽子按妙脆角喵配件比例显示，并保持在木架挂点附近。 */
+
+/* “旅行”窗口：移除突兀的大字图，改为清晰的状态、消耗和奖励层级。 */
+.travel-modal{font-family:"MPlus2c","Microsoft YaHei",sans-serif}.travel-modal header{margin-bottom:14px}.travel-card{position:relative;display:grid;grid-template-columns:105px 1fr;gap:18px;align-items:stretch}.travel-emblem{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:210px;border-radius:18px;background:linear-gradient(160deg,#eef1d7,#dce4ba);box-shadow:inset 0 0 0 1px #cbd5a8;color:#68774d;font-size:12px;font-weight:700;letter-spacing:.08em}.travel-emblem img{width:62px;height:65px;margin-bottom:10px;object-fit:contain;filter:drop-shadow(0 4px 3px #65714944)}.travel-content{display:flex;flex-direction:column;justify-content:center}.travel-content>#tripState{margin:0 0 12px;color:#4e503e;font-size:15px;font-weight:700}.travel-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.travel-facts>div{padding:10px 11px;border:1px solid #dfd3b5;border-radius:12px;background:#f5eedc}.travel-facts small,.travel-facts b{display:block}.travel-facts small{margin-bottom:3px;color:#91866d;font-size:10px}.travel-facts b{color:#55513e;font-size:13px}.travel-reward{margin:10px 2px 14px;color:#827760;font-size:11px;line-height:1.6}.travel-modal #tripButton{width:100%;padding:11px}.travel-modal #instantReturn{margin-top:9px}@media(max-width:520px){.travel-card{grid-template-columns:78px 1fr;gap:11px}.travel-emblem{min-height:200px}.travel-emblem img{width:48px;height:50px}.travel-facts{grid-template-columns:1fr}.travel-reward{margin-bottom:9px}}
+
+/* 出发过场：使用妙脆角喵吃饭三帧素材，正序、倒序后切换庭院。 */
+.departure-frog{left:64%;bottom:27%;width:clamp(68px,11vh,102px);aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/Fucat/cat_eat.png");background-size:300% 100%;background-position:0 0;animation:departureFrames .55s linear 6 alternate}@keyframes departureFrames{0%,33.32%{background-position:0 0}33.33%,66.65%{background-position:50% 0}66.66%,100%{background-position:100% 0}}
+
+/* 小屋到庭院的柔和转场，在遮罩最深处更换场景。 */
+.scene-transition{position:absolute;z-index:25;inset:0;overflow:hidden;background:radial-gradient(circle at 55% 45%,#f8edc9 0,#d9c995 48%,#6d7955 115%);opacity:0;pointer-events:none;transition:opacity .46s ease-in-out}.scene-transition.cover{opacity:1}.scene-transition i{position:absolute;width:44%;height:25%;border-radius:100% 0 100% 0;background:#70855238;filter:blur(2px);transform:rotate(22deg)}.scene-transition i:nth-child(1){left:-13%;top:8%}.scene-transition i:nth-child(2){right:-18%;top:38%;transform:rotate(198deg)}.scene-transition i:nth-child(3){left:18%;bottom:-9%;transform:rotate(45deg);background:#b18b5630}
+.world.departure-locked:before{content:"";position:absolute;z-index:24;inset:0;background:transparent;pointer-events:auto;cursor:wait}.world:not(.garden-scene) .bubble.departure-bubble{left:74%;right:auto;top:43%;max-width:210px;transform:translateX(-50%);text-align:center}.world:not(.garden-scene) .bubble.departure-bubble:after{display:none}
+
+/* 出发动画与读书妙脆角喵共用落脚位置；旅行中锁住房门。 */
+.frog-actor.departure-frog{left:77%;bottom:32%}.garden-scene .house-door.trip-locked{pointer-events:none;cursor:default;opacity:.35}
+.photo .photo-caption b{margin:2px 0 0}.wide-modal header h2,.photo-detail-modal header h2{font-family:"MPlus2c","Microsoft YaHei",sans-serif}
+.album-pager{position:relative;display:flex;align-items:center;justify-content:center;gap:13px;margin-top:14px;font-family:"MPlus2c","Microsoft YaHei",sans-serif}.album-pager button{min-width:82px;padding:7px 11px;border:1px solid #d5c69f;border-radius:12px;background:#fffaf0;color:#62734b;font-weight:700}.album-pager button:disabled{opacity:.35;cursor:default}.album-pager span{min-width:48px;color:#817861;font-size:12px;font-weight:700;text-align:center}.test-tools>div{grid-template-columns:1fr 1fr}.test-tools #unlockAlbum{grid-column:1/-1}
+.test-grow{display:grid!important;grid-template-columns:1fr 54px 18px 62px!important;align-items:center;gap:6px!important;margin-top:9px;padding-top:9px;border-top:1px dashed #cdbf99;font-family:"MPlus2c","Microsoft YaHei",sans-serif}.test-grow label{color:#756e5a;font-size:11px;font-weight:700}.test-grow input{width:54px;padding:7px 5px;border:1px solid #cabc96;border-radius:8px;background:#fffaf0;color:#4f513d;text-align:center}.test-grow span{color:#817861;font-size:11px}.test-grow button{padding:8px 5px!important}
+
+/* 原创任务小屋：妙脆角喵插画、便签输入、叶片步数筹码与计划卡。 */
+.tasks-modal{font-family:"MPlus2c","Microsoft YaHei",sans-serif}.tasks-modal header h2{font-family:inherit;font-weight:800;letter-spacing:.04em}.task-compose{display:grid!important;grid-template-columns:78px 1fr!important;gap:10px 13px!important;padding:12px;border:1px solid #d8c99f;border-radius:17px;background:linear-gradient(145deg,#f3ecd5,#fffaf0);box-shadow:inset 0 0 0 4px #ffffff66}.task-frog-note{grid-row:1/3;width:78px;aspect-ratio:115.75/97;background:url("sprites/cat-scholar/imported/frog-textures/01_Home/hikki_ie.png") 0 0/400% 200% no-repeat;align-self:center;filter:drop-shadow(0 4px 3px #5d674344)}.task-note-input label,.goal-picker>span{display:block;margin-bottom:5px;color:#81775f;font-size:10px;font-weight:700;letter-spacing:.04em}.task-note-input input{width:100%;padding:10px 12px!important;border:0!important;border-bottom:2px solid #cfc09a!important;border-radius:8px 8px 3px 3px!important;background:#fffdf7cc!important;color:#484738;font-family:inherit;font-size:13px;outline:none}.task-note-input input:focus{border-bottom-color:#7b9853!important;box-shadow:0 3px 0 #a9bd8344}.goal-picker{grid-column:2}.goal-picker>div{display:flex;gap:6px}.goal-picker button{width:34px;height:30px;padding:0!important;border:1px solid #cbbd98!important;border-radius:50% 50% 45% 55%!important;background:#f7f1df!important;color:#746d58!important;font-weight:800}.goal-picker button:after{content:"步";margin-left:1px;font-size:8px}.goal-picker button.selected{border-color:#738e4f!important;background:#829e5d!important;color:white!important;box-shadow:0 3px 0 #607642}.task-compose .pin-task{grid-column:1/-1;justify-self:end;min-width:130px;padding:9px 15px!important;border:0!important;border-radius:12px!important;background:#718f4d!important;color:#fff!important;box-shadow:0 4px 0 #526d35;font-family:inherit;font-weight:800}.task-board{grid-template-columns:1fr 1fr;gap:12px!important}.task-board .task-row{position:relative;display:grid;grid-template-columns:1fr!important;gap:9px!important;min-width:0;padding:13px 12px 11px!important;border:1px solid #dfd0a9!important;border-radius:4px 13px 7px 11px;background:#fffaf0;box-shadow:0 5px 10px #5c513322;transform:rotate(var(--task-tilt))}.task-board .task-row:before{content:"";position:absolute;left:50%;top:-5px;width:10px;height:10px;border-radius:50%;background:#bd7658;box-shadow:0 2px 2px #6e4b3f55}.task-main small{color:#9a846c;font-size:9px;font-weight:700}.task-main h3{min-height:34px;margin:3px 0 7px!important;color:#494838;font-size:13px!important;line-height:1.4}.task-progress{display:flex;align-items:center;gap:4px}.task-progress i{width:10px;height:10px;border:1px solid #8da16c;border-radius:50% 50% 45% 55%;background:#e5ecd5;transform:rotate(-25deg)}.task-progress i.done{background:#789852}.task-progress span{margin-left:auto;color:#81775f;font-size:9px;font-weight:700}.task-action{width:100%;padding:7px!important;border:0!important;border-radius:9px!important;background:#7d9958!important;color:#fff!important;font-family:inherit;font-size:10px!important;font-weight:700}.task-action:disabled{background:#d6cdb4!important;color:#7f765f!important}.task-board .remove{position:absolute;right:5px;top:4px;width:22px;height:22px;border:0!important;background:transparent!important;color:#ae826f!important;font-size:16px}.tasks-modal .empty{font-family:inherit}@media(max-width:520px){.task-compose{grid-template-columns:60px 1fr!important}.task-frog-note{width:60px}.task-board{grid-template-columns:1fr}}
+
+/* 专注陪伴窗口：保留倒计时显示样式和读书妙脆角喵动画，仅重做周边游戏界面。 */
+.focus-modal{font-family:"MPlus2c","Microsoft YaHei",sans-serif}.focus-header{margin-bottom:4px!important}.focus-header h2{max-width:82%;margin:3px auto 0!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:inherit!important;font-size:20px!important;font-weight:800!important;letter-spacing:.02em}.focus-scene{position:relative;display:flex;align-items:center;justify-content:center;min-height:116px;margin:3px 0 0;border-radius:60px;background:radial-gradient(ellipse,#e9efd3 0,#f7f0dc99 52%,transparent 72%)}.focus-leaf{position:absolute;color:#9aae71;font-size:17px;opacity:.7;animation:focusLeaf 2.6s ease-in-out infinite}.focus-leaf.leaf-left{left:18%;top:43%;transform:rotate(-20deg)}.focus-leaf.leaf-right{right:18%;top:27%;transform:rotate(18deg);animation-delay:-1.2s}@keyframes focusLeaf{50%{translate:0 -4px;opacity:1}}.focus-clock{position:relative;margin-top:0}.focus-clock>small{display:block;margin-bottom:-3px;color:#91866d;font-size:9px;font-weight:700;letter-spacing:.08em}.focus-modal .time-pills{gap:7px;margin:5px 10px 9px}.focus-modal .time-pills button{position:relative;min-width:58px;padding:7px 9px;border:1px solid #d7caa8;border-radius:18px;background:#eee6d2;color:#766f5d;font-family:inherit;font-weight:700}.focus-modal .time-pills button.active{border-color:#718c4f;background:#7f9c58;color:#fff;box-shadow:0 3px 0 #5d743d}.focus-promise{margin:0 auto 11px;color:#847a63;font-size:10px;line-height:1.6}.focus-modal #timerButton{min-width:150px;font-family:inherit;font-weight:800}.focus-modal #instantFocus{font-family:inherit}
+
+/* 旅行行李：每类最多选择一件，选中商品在出发时消耗。 */
+.travel-loadout{display:grid;gap:6px;margin-top:9px}.loadout-group{display:grid;grid-template-columns:42px 1fr;align-items:start;gap:5px}.loadout-group>small{padding-top:7px;color:#857b63;font-size:9px;font-weight:700}.loadout-group>div{display:flex;gap:5px;overflow-x:auto;padding:1px 1px 4px}.loadout-group button{flex:0 0 76px;display:grid;grid-template-columns:25px 1fr;align-items:center;gap:3px;min-width:0;padding:4px;border:1px solid #d8cba8;border-radius:9px;background:#fffaf0;color:#66614e;text-align:left}.loadout-group button.selected{border-color:#718c4f;background:#e8efd4;box-shadow:0 0 0 2px #8da76655}.loadout-group button:disabled{opacity:.65}.loadout-group img{width:25px;height:25px;object-fit:contain}.loadout-group button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px;font-weight:700}.loadout-group button i{display:block;color:#92866c;font-size:7px;font-style:normal}.loadout-empty{padding:7px 4px;color:#a0957d;font-size:8px}.travel-content #travelEffectPreview{min-height:30px;margin:6px 2px 9px}.travel-modal{max-height:88vh}
+
+/* 商店：原创商品图标直接展示，每页固定四件。 */
+.shop-modal,.purchase-modal{font-family:"MPlus2c","Microsoft YaHei",sans-serif}.shop-modal header h2,.purchase-modal header h2{font-family:inherit;font-weight:800}.shop-shelf-head{position:relative;display:flex;align-items:center;justify-content:space-between;margin:-4px 0 10px;padding:7px 10px;border-bottom:1px dashed #cdbf99;color:#776e59;font-size:11px;font-weight:700}.shop-shelf-head b{display:flex;align-items:center;gap:4px;color:#4e513d;font-size:14px}.shop-shelf-head img{width:18px;height:18px;object-fit:contain}.shop-shelf-head i{font-style:normal}.shop-grid{grid-template-columns:repeat(2,1fr)!important;gap:10px!important}.shop-grid .shop-item{display:grid;grid-template-columns:82px 1fr;grid-template-rows:auto auto auto;align-items:center;column-gap:8px;min-width:0;padding:8px!important;border:1px solid #ddcfaa!important;border-radius:14px!important;background:#fffaf0!important;color:#4e4c3c;text-align:left}.shop-tray{grid-row:1/4;position:relative;display:flex;align-items:center;justify-content:center;width:82px;aspect-ratio:276/227;background:none}.shop-tray img{position:relative;width:68px!important;height:68px!important;margin:0!important;object-fit:contain!important;filter:drop-shadow(0 3px 2px #51493155)}.shop-item b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px!important}.shop-item small{overflow:hidden;color:#91866d;font-size:9px;white-space:nowrap}.shop-item>span:last-child{color:#668448;font-size:12px;font-weight:800}.shop-item:hover,.shop-item:focus-visible{outline:2px solid #a9bc7a;transform:translateY(-2px);box-shadow:0 5px 12px #65583a22}.shop-pager{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0 8px}.shop-pager button{min-width:78px;padding:7px;border:1px solid #d1c39d;border-radius:12px;background:#fffaf0;color:#64764c;font-weight:700}.shop-pager button:disabled{opacity:.35;cursor:default}.shop-pager span{min-width:46px;color:#817861;font-size:11px;font-weight:700;text-align:center}.shop-inventory{position:relative;max-height:42px;margin:6px 0 0;overflow:auto;color:#80765e;font-size:10px;line-height:1.6}.purchase-preview{position:relative;display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center}.purchase-tray{display:flex;align-items:center;justify-content:center;width:130px;aspect-ratio:276/227;background:none}.purchase-tray img{width:105px;height:105px;object-fit:contain;filter:drop-shadow(0 4px 3px #51493155)}.purchase-preview p{margin:0 0 9px;color:#6f6955;font-size:11px;line-height:1.7}.purchase-preview b,.purchase-preview small{display:block}.purchase-preview b{color:#668448;font-size:18px}.purchase-preview small{margin-top:5px;color:#91866d;font-size:10px}.purchase-question{text-align:center;color:#585644;font-size:13px;font-weight:700}.purchase-actions{position:relative;display:flex;justify-content:center;gap:10px}.purchase-actions button{min-width:105px;padding:9px;border:1px solid #d1c39d;border-radius:11px;background:#fffaf0;color:#706953;font-family:inherit;font-weight:700}.purchase-actions .wood-button{border:3px solid #fff1cf;background:linear-gradient(#8da762,#6e8a48);color:#fff}.purchase-actions .wood-button:disabled{filter:grayscale(1);opacity:.55}@media(max-width:520px){.shop-grid .shop-item{grid-template-columns:65px 1fr}.shop-tray{width:65px}.shop-tray img{width:54px!important;height:54px!important}.purchase-preview{grid-template-columns:105px 1fr}.purchase-tray{width:105px}.purchase-tray img{width:82px;height:82px}}
+
+/* 相册使用素材字体与真实文字说明，照片底部展示地点，点击进入详情。 */
+.wide-modal,.photo-detail-modal{font-family:"MPlus2c","Microsoft YaHei",sans-serif}.wide-modal header h2,.photo-detail-modal header h2{font-weight:800;letter-spacing:.03em}.album-grid{align-items:start}.photo{padding:6px 6px 0;border:0;border-bottom:0;background:#fff;cursor:pointer;text-align:left;transition:transform .18s ease,box-shadow .18s ease}.photo:hover,.photo:focus-visible{outline:none;transform:translateY(-3px) rotate(0);box-shadow:0 8px 18px #5d50364d}.photo img{display:block}.photo-caption{display:block;min-height:49px;padding:7px 5px 8px}.photo-caption small,.photo-caption b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.photo-caption small{color:#91866d;font-size:9px;font-weight:500}.photo-caption b{margin-top:2px;color:#4d4b3a;font-size:12px;font-weight:800}.photo-detail-modal{width:min(520px,calc(var(--stage-width) - 28px));text-align:center}.photo-detail-image{display:block;width:100%;aspect-ratio:10/7;object-fit:cover;border:7px solid #fff;box-shadow:0 5px 16px #5d503644}.photo-location{display:flex;justify-content:center;gap:8px;margin:13px 0 7px;color:#7c765f;font-size:11px;font-weight:700}.photo-detail-text{margin:0;padding:13px 16px;border-radius:13px;background:#f1ead7;color:#595745;font-size:12px;line-height:1.8;text-align:left}.photo-detail-modal #backAlbum{margin-top:10px}
+
+/* Courtyard protagonist: three-frame Fucat idle strip. */
+.frog-actor.garden-frog{background-image:url("sprites/cat-scholar/characters/Fucat/garden_idle_strip.png")}
+
+/* 妙脆角喵：今日任务安排启动页 */
+.title-screen{padding:clamp(18px,4vw,52px);align-items:center;justify-content:center;background:linear-gradient(115deg,#223b2c99,#6f875166 52%,#f0c97c33),url("sprites/cat-scholar/background/garden.png") center 31%/cover no-repeat;font-family:"MPlus2c","Microsoft YaHei",sans-serif}
+.title-screen:before{z-index:0;background:linear-gradient(90deg,#172a21a8 0%,#2f4a3466 42%,#2534262e 72%),radial-gradient(circle at 78% 28%,#fff0bd66,transparent 34%)}
+.title-screen:after{content:"";position:absolute;z-index:0;inset:0;background:linear-gradient(180deg,#18291d22,transparent 55%,#17231999);pointer-events:none}
+.title-planner{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;width:min(980px,94vw);min-height:min(540px,78vh);overflow:hidden;border:1px solid #fff4dca8;border-radius:34px;background:linear-gradient(125deg,#fffaf0f2,#f4ead6e8 58%,#e8d3afdd);box-shadow:0 26px 70px #101b13a8,inset 0 0 0 7px #ffffff55;text-align:left;backdrop-filter:blur(8px)}
+.title-planner:before{content:"";position:absolute;left:44px;top:-12px;width:116px;height:32px;background:#e6bd77cc;box-shadow:0 2px 4px #67523733;transform:rotate(-3deg)}
+.title-planner:after{content:"";position:absolute;right:-86px;bottom:-105px;width:330px;height:260px;border-radius:50%;background:#7f9c5652;transform:rotate(-18deg)}
+.title-copy{position:relative;z-index:3;padding:clamp(34px,5vw,70px)}
+.title-kicker{display:inline-flex;align-items:center;gap:8px;margin-bottom:15px;color:#b6674d;font-size:11px;font-weight:800;letter-spacing:.22em}
+.title-kicker:before{content:"";width:30px;height:2px;background:#c67557}
+.title-screen h1{margin:0;color:#3d4c38;text-shadow:none;font-family:"MPlus2c","Microsoft YaHei",sans-serif;line-height:1.05}
+.title-screen h1 span,.title-screen h1 strong{display:block}
+.title-screen h1 span{font-size:clamp(36px,5.7vw,66px);font-weight:800;letter-spacing:.04em}
+.title-screen h1 strong{margin-top:10px;color:#bd624c;font-size:clamp(25px,3.2vw,39px);font-weight:800;letter-spacing:.12em}
+.title-screen p{max-width:450px;margin:23px 0 17px;color:#625e4d;font-size:clamp(13px,1.6vw,17px);font-weight:600;line-height:1.8;text-shadow:none}
+.title-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:27px}
+.title-tags span{padding:7px 12px;border:1px solid #d8c8a8;border-radius:999px;background:#fffaf0b8;color:#6f7858;font-size:11px;font-weight:700}
+.title-copy .wood-button{min-width:178px;padding:13px 30px;border-color:#fff0d1;background:linear-gradient(180deg,#d67a5c,#ad5442);box-shadow:0 5px 0 #7b3e32,0 12px 24px #733d2c44;font-family:inherit;font-size:15px;letter-spacing:.08em}
+.title-copy .wood-button:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.title-copy small{display:block;margin:17px 0 0 4px;color:#8d806a;font-size:10px;letter-spacing:.08em}
+.title-visual{position:relative;z-index:2;align-self:stretch;min-height:430px}
+.title-board{position:absolute;left:5%;top:13%;width:min(280px,26vw);min-width:220px;padding:25px 24px 25px;border:2px solid #cdbb93;border-radius:9px 22px 12px 18px;background:#fffdf4;box-shadow:0 16px 32px #54452d35;transform:rotate(3deg)}
+.title-board:before{content:"";position:absolute;left:50%;top:-10px;width:54px;height:20px;background:#dba86fbb;transform:translateX(-50%) rotate(-2deg)}
+.title-board span{display:block;margin-bottom:15px;padding-bottom:10px;border-bottom:1px dashed #cdbb99;color:#4b5943;font-size:17px;font-weight:800;letter-spacing:.12em}
+.title-board i{display:block;position:relative;margin:11px 0;padding-left:25px;color:#756f5b;font-size:12px;font-style:normal;font-weight:600}
+.title-board i:before{content:"";position:absolute;left:0;top:1px;width:13px;height:13px;border:2px solid #9cad7a;border-radius:4px;background:#f8f4e6}
+.title-board i.done{text-decoration:line-through;color:#aaa18c}
+.title-board i.done:after{content:"✓";position:absolute;left:2px;top:-4px;color:#718d51;font-size:18px;font-weight:900;text-decoration:none}
+.title-cat{position:absolute;z-index:3;right:7%;bottom:7%;width:clamp(160px,20vw,230px);aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/Fucat/garden_idle_strip.png");background-size:300% 100%;background-position:0 0;animation:titleCatFrames 2.5s linear infinite alternate;filter:drop-shadow(0 13px 10px #493d2d55)}
+.title-pencil{position:absolute;z-index:4;left:11%;bottom:18%;width:118px;height:12px;border:2px solid #5f513d;border-radius:8px;background:linear-gradient(90deg,#d9a65a 0 83%,#e9d8b5 83% 92%,#4c4a3c 92%);box-shadow:0 5px 8px #46392733;transform:rotate(-23deg)}
+@keyframes titleCatFrames{0%,31%{background-position:0 0}34%,64%{background-position:50% 0}67%,100%{background-position:100% 0}}
+@media(max-width:720px){.title-screen{padding:12px;background-position:60% 25%}.title-planner{grid-template-columns:1fr;min-height:min(620px,92vh);border-radius:25px}.title-copy{z-index:5;padding:38px 28px 230px}.title-screen h1 span{font-size:clamp(34px,11vw,54px)}.title-screen h1 strong{font-size:clamp(23px,7vw,32px)}.title-screen p{margin:17px 0 13px}.title-tags{margin-bottom:20px}.title-visual{position:absolute;z-index:2;inset:auto 0 0;height:245px;min-height:0}.title-board{left:8%;top:8%;width:220px;min-width:0;padding:19px 18px;opacity:.82}.title-board span{font-size:14px}.title-board i{margin:8px 0;font-size:10px}.title-cat{right:4%;bottom:0;width:155px}.title-pencil{display:none}}
+@media(max-height:620px) and (min-width:721px){.title-planner{min-height:460px}.title-copy{padding:35px 55px}.title-visual{min-height:390px}.title-board{top:9%}.title-screen p{margin:14px 0 12px}.title-tags{margin-bottom:18px}}
+
+/* 启动页采用旧版居中单列构图，桌面与手机共用同一视觉层级。 */
+.title-screen{background-position:center 27%}
+.title-screen:before{background:linear-gradient(180deg,#263a2c77,#40513d66 48%,#1c281fa8),radial-gradient(circle at 50% 35%,#fff2be44,transparent 38%)}
+.title-planner{display:flex;flex-direction:column;width:min(680px,94vw);min-height:0;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:center;backdrop-filter:none}
+.title-planner:before,.title-planner:after{display:none}
+.title-visual{order:-1;align-self:auto;width:100%;min-height:clamp(150px,25vh,215px)}
+.title-board,.title-pencil{display:none}
+.title-cat{left:50%;right:auto;bottom:0;width:clamp(155px,23vw,225px);transform:translateX(-50%);filter:drop-shadow(0 10px 4px #fff6d455) drop-shadow(0 16px 13px #25302088)}
+.title-cat{animation:none;background-position:0 0}
+.title-copy{padding:8px 20px 20px;text-align:center}
+.title-kicker{justify-content:center;margin-bottom:10px;color:#fff3d4;text-shadow:0 2px 5px #25301f}
+.title-kicker:before{background:#f4d69b}
+.title-screen h1 span{color:#fff7df;text-shadow:0 4px 0 #536842,0 8px 18px #1b281c;font-size:clamp(38px,6vw,66px)}
+.title-screen h1 strong{margin-top:8px;color:#fffaf0;text-shadow:0 3px 0 #a75846,0 7px 14px #2a2b1f;font-size:clamp(25px,3.5vw,40px)}
+.title-screen p{margin:18px auto 14px;color:#fff;font-size:clamp(13px,1.5vw,16px);text-shadow:0 2px 6px #1f2b20}
+.title-tags{justify-content:center;margin-bottom:22px}
+.title-tags span{border-color:#fff5d5aa;background:#31452fbb;color:#fff8e6;box-shadow:0 3px 9px #1e291e44}
+.title-copy .wood-button{min-width:188px}
+.title-copy small{margin:17px 0 0;color:#fff5dc;text-shadow:0 2px 5px #263224}
+@media(max-width:720px){.title-screen{padding:16px 12px;background-position:57% 24%}.title-planner{min-height:0}.title-visual{position:relative;inset:auto;height:auto;min-height:clamp(130px,23vh,180px)}.title-cat{right:auto;bottom:0;width:clamp(145px,43vw,190px)}.title-copy{padding:5px 12px 14px}.title-screen h1 span{font-size:clamp(36px,12vw,52px)}.title-screen h1 strong{font-size:clamp(22px,7.5vw,31px)}.title-screen p{max-width:330px;margin:14px auto 12px;line-height:1.65}.title-tags{gap:6px;margin-bottom:18px}.title-tags span{padding:6px 9px;font-size:10px}.title-copy .wood-button{min-width:175px;padding:12px 25px}.title-copy small{margin-top:14px}}
+@media(max-height:590px){.title-visual{min-height:120px}.title-cat{width:130px}.title-kicker{margin-bottom:5px}.title-screen h1 span{font-size:34px}.title-screen h1 strong{margin-top:5px;font-size:23px}.title-screen p{margin:9px auto}.title-tags{margin-bottom:12px}.title-copy small{margin-top:10px}}
+
+/* 非游玩状态：场景物体设定模式 */
+.setup-toggle{position:absolute;z-index:9;right:18px;top:78px;min-width:62px;padding:8px 13px;border:2px solid #fff6dc;border-radius:999px;background:#42583ed9;color:#fff9e8;box-shadow:0 5px 14px #17231966;font-size:11px;font-weight:800;letter-spacing:.08em;backdrop-filter:blur(5px)}
+.setup-toggle:before{content:"✦";margin-right:5px;color:#f2cf72}.setup-toggle:hover,.setup-toggle:focus-visible{outline:none;background:#5c7652}.setup-mode .setup-toggle{background:#bd6650}.setup-mode .setup-toggle span{font-size:0}.setup-mode .setup-toggle span:after{content:"设定中";font-size:11px}
+.placed-objects{position:absolute;z-index:4;inset:0;pointer-events:none}.garden-scene .placed-objects{width:150%;right:auto;transform:translateX(var(--pan-x))}.placed-object{position:absolute;width:var(--object-size);padding:0;border:0;background:transparent;transform:translate(-50%,-50%) rotate(var(--object-rotation)) scaleX(var(--object-flip));transform-origin:center;touch-action:none;filter:drop-shadow(0 5px 4px #26302055)}.placed-object>.object-image{display:block;width:100%;height:auto;pointer-events:none;user-select:none}.placed-object.object-interactive{pointer-events:auto;cursor:pointer}.placed-object.object-mailbox:hover,.placed-object.object-mailbox:focus-visible{outline:none;filter:drop-shadow(0 0 7px #fff2a5) drop-shadow(0 5px 4px #26302055)}.placed-mail-dot{position:absolute;right:10%;top:8%;display:flex;align-items:center;justify-content:center;width:31px;height:31px;border:2px solid #fff8dc;border-radius:50%;background:#d2674f;box-shadow:0 4px 9px #492d2755;animation:placedMailPulse 1.4s ease-in-out infinite;pointer-events:none}.placed-mail-dot img{display:block;width:25px;height:25px;object-fit:contain}.setup-mode .placed-objects{pointer-events:auto}.setup-mode .placed-object{cursor:grab}.setup-mode .placed-object:active{cursor:grabbing}.setup-mode .placed-object.selected{outline:2px dashed #fff4b8;outline-offset:5px;filter:drop-shadow(0 0 7px #fff3a6) drop-shadow(0 5px 4px #26302055)}@keyframes placedMailPulse{50%{transform:scale(1.12);box-shadow:0 4px 9px #492d2755,0 0 0 6px #fff0a833}}
+.setup-panel{position:absolute;z-index:18;left:50%;bottom:12px;width:min(720px,calc(100% - 24px));padding:10px 12px 9px;border:3px solid #fff4d5;border-radius:20px;background:#f7efdfeF;box-shadow:0 15px 40px #17201799;opacity:0;pointer-events:none;transform:translate(-50%,calc(100% + 30px));transition:transform .24s ease,opacity .18s ease;backdrop-filter:blur(7px)}
+.setup-mode .setup-panel{opacity:1;pointer-events:auto;transform:translate(-50%,0)}.setup-panel>header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.setup-panel>header div{display:flex;align-items:baseline;gap:8px}.setup-panel>header b{color:#4d5641;font-size:13px}.setup-panel>header span{color:#9b846a;font-size:10px}.setup-panel>header button{padding:6px 13px;border:0;border-radius:999px;background:#6f8b52;color:#fff;font-size:11px;font-weight:800}
+.object-palette{display:flex;gap:7px;overflow-x:auto;padding:2px 1px 7px;scrollbar-width:thin}.object-palette button{flex:0 0 88px;display:grid;grid-template-columns:38px 1fr;align-items:center;gap:5px;min-width:0;padding:5px 7px;border:1px solid #d7c9a8;border-radius:12px;background:#fffaf0;color:#635e4c;text-align:left}.object-palette button:hover,.object-palette button:focus-visible{outline:2px solid #9bad77;background:#fffdf7}.object-palette img{width:38px;height:38px;object-fit:contain}.object-palette span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px;font-weight:800}
+.object-controls{display:flex;align-items:center;gap:5px;padding-top:8px;border-top:1px dashed #cfc09f}.object-controls button{min-width:36px;height:31px;padding:0 9px;border:1px solid #d2c29e;border-radius:9px;background:#fffaf0;color:#5e674e;font-size:12px;font-weight:800}.object-controls button:disabled{opacity:.35;cursor:default}.object-controls .danger{margin-left:auto;border-color:#dab5aa;color:#aa5143}.setup-panel>p{margin:7px 2px 0;color:#8b7e68;font-size:9px}.setup-mode .dock,.setup-mode .dock-trigger{opacity:0!important;pointer-events:none!important}.setup-mode .hotspot,.setup-mode .actor,.setup-mode .clover-field,.setup-mode .bubble,.setup-mode .pan-control{pointer-events:none}.setup-mode:after{content:"设定模式";position:absolute;z-index:6;left:50%;top:18px;transform:translateX(-50%);padding:6px 14px;border:2px solid #fff5da;border-radius:999px;background:#ad5c49df;color:#fff;font-size:10px;font-weight:900;letter-spacing:.15em;pointer-events:none}
+@media(max-width:650px){.setup-toggle{right:10px;top:72px;padding:7px 10px}.setup-panel{bottom:7px;width:calc(100% - 12px);padding:8px;border-radius:16px}.object-palette button{flex-basis:76px;grid-template-columns:32px 1fr;padding:4px}.object-palette img{width:32px;height:32px}.object-controls{gap:3px;overflow-x:auto}.object-controls button{flex:0 0 auto;min-width:33px;height:29px;padding:0 7px}.setup-panel>p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.setup-mode:after{top:12px}}
+
+/* 庭院访客：虫虫猫横向三帧待机动画 */
+.snail-sprite{aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/ChongCat/garden_idle_strip.png");background-size:300% 100%;background-position:0 0;animation-name:threeFrameHold;animation-duration:.85s;animation-timing-function:linear;animation-iteration-count:infinite;animation-direction:alternate}
+.bee-sprite{aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/SanCat/garden_idle_strip.png");background-size:300% 100%;background-position:0 0;animation-name:threeFrameHold;animation-duration:.85s;animation-timing-function:linear;animation-iteration-count:infinite;animation-direction:alternate}
+
+/* 妙脆角喵读书与吃饭统一使用 Fucat 三帧素材，不再区分时间段。 */
+.reading-sprite,.frog-actor.home-chair,.time-evening .frog-actor.home-chair{aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/Fucat/cat_read.png");background-size:300% 100%;background-position:0 0;animation-name:threeFrameHold;animation-duration:.85s;animation-timing-function:linear;animation-iteration-count:infinite;animation-direction:alternate}
+.daodun-sprite{width:clamp(74px,12vh,112px);aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/daodun/daodun_idle_strip.png");background-size:300% 100%;background-position:0 0;animation-name:threeFrameHold;animation-duration:.85s;animation-timing-function:linear;animation-iteration-count:infinite;animation-direction:alternate}
+.character-copy.daodun-sprite{pointer-events:auto;cursor:pointer}.character-speech{position:absolute;z-index:8;max-width:210px;padding:9px 12px;border:3px solid #fff;border-radius:14px;background:#fff9e9f2;box-shadow:0 5px 14px #1f281b55;color:var(--ink);font-family:"MPlus2c","Microsoft YaHei",sans-serif;font-size:12px;font-weight:700;line-height:1.5;text-align:center;white-space:nowrap;opacity:0;pointer-events:none;transform:translate(-50%,-100%) translateY(5px) scale(.97);transform-origin:50% 100%;transition:opacity .22s ease,transform .22s ease}.character-speech:after{content:"";position:absolute;left:50%;bottom:-9px;width:13px;height:13px;border-right:3px solid #fff;border-bottom:3px solid #fff;background:#fff9e9;transform:translateX(-50%) rotate(45deg)}.character-speech.visible{opacity:1;transform:translate(-50%,-100%) scale(1)}
+.meal-frog,.time-evening .meal-frog{aspect-ratio:132.333/139;background-image:url("sprites/cat-scholar/characters/Fucat/cat_eat.png");background-size:300% 100%;background-position:0 0;animation-name:threeFrameHold;animation-duration:.62s;animation-timing-function:linear;animation-iteration-count:6;animation-direction:alternate}
+
+/* 人物布置层：原始人物保留功能，复制人物仅作动画装饰。 */
+.character-layer{position:absolute;z-index:5;inset:0;pointer-events:none}.character-layer>#characterCopies{position:absolute;inset:0;pointer-events:none}.garden-scene .character-layer{width:150%;right:auto;transform:translateX(var(--pan-x))}.character-layer .actor{right:auto;bottom:auto;left:0;top:0;transform:translate(-50%,-50%) rotate(var(--character-rotation,0deg)) scale(var(--character-scale,1)) scaleX(var(--character-flip,1));transform-origin:center;touch-action:none}.garden-scene .character-layer .frog-actor,.garden-scene .character-layer .visitor-actor{transform:translate(-50%,-50%) rotate(var(--character-rotation,0deg)) scale(var(--character-scale,1)) scaleX(var(--character-flip,1));translate:none}.character-layer>#frogActor,.character-layer>#visitorActor{pointer-events:auto}.character-copy{padding:0;border:0;background-color:transparent;pointer-events:none}.setup-mode .character-layer .actor{pointer-events:auto;cursor:grab}.setup-mode .character-layer .actor:active{cursor:grabbing}.setup-mode .character-layer .actor.selected{outline:2px dashed #fff4b8;outline-offset:5px;filter:drop-shadow(0 0 7px #fff3a6) drop-shadow(0 5px 4px #26302055)}.setup-dragging .character-layer .actor.selected{outline-color:#fff8c9}
+
+/* 设定模式：顶部调整栏 + 可折叠底部素材抽屉 */
+.setup-mode:after{display:none}.setup-mode .setup-toggle{opacity:0;pointer-events:none}
+.setup-toolbar{position:absolute;z-index:19;left:50%;top:12px;display:flex;align-items:center;gap:9px;width:min(760px,calc(100% - 28px));padding:7px 9px;border:2px solid #fff4d5;border-radius:16px;background:#f7efdfee;box-shadow:0 8px 24px #17201777;opacity:0;pointer-events:none;transform:translate(-50%,-18px);transition:opacity .18s ease,transform .2s ease;backdrop-filter:blur(7px)}
+.setup-mode .setup-toolbar{opacity:1;pointer-events:auto;transform:translate(-50%,0)}.setup-toolbar strong{display:flex;flex:0 0 auto;align-items:baseline;gap:6px;padding:0 5px;color:#526047}.setup-toolbar strong span{font-size:11px}.setup-toolbar strong b{color:#a26b54;font-size:9px}.setup-toolbar .object-controls{flex:1;min-width:0;padding:0;border:0}.setup-toolbar .object-controls .danger{margin-left:auto}.setup-toolbar>#setupDone{flex:0 0 auto;padding:7px 13px;border:0;border-radius:999px;background:#6f8b52;color:#fff;font-size:10px;font-weight:800}
+.setup-mode .setup-panel{opacity:0;pointer-events:none;transform:translate(-50%,calc(100% + 30px))}.setup-mode.setup-drawer-open .setup-panel{opacity:1;pointer-events:auto;transform:translate(-50%,0)}.setup-panel{bottom:max(8px,env(safe-area-inset-bottom))}.setup-panel>header button{background:#88745b}
+.setup-drawer-toggle{position:absolute;z-index:18;left:50%;bottom:max(8px,env(safe-area-inset-bottom));min-width:88px;padding:9px 16px;border:2px solid #fff3d3;border-radius:999px;background:#566d4be8;color:#fff;font-size:11px;font-weight:900;box-shadow:0 7px 18px #17211777;opacity:0;pointer-events:none;transform:translate(-50%,18px);transition:opacity .18s ease,transform .2s ease;backdrop-filter:blur(6px)}
+.setup-mode:not(.setup-drawer-open) .setup-drawer-toggle{opacity:1;pointer-events:auto;transform:translate(-50%,0)}.setup-mode.setup-drawer-open .setup-drawer-toggle{opacity:0;pointer-events:none}.setup-dragging .setup-toolbar,.setup-dragging .setup-drawer-toggle{opacity:0!important;pointer-events:none!important}.setup-dragging .setup-panel{opacity:0!important;pointer-events:none!important}.setup-dragging .placed-object.selected{outline-color:#fff8c9}
+@media(max-width:650px){.setup-toolbar{left:6px;right:6px;top:max(6px,env(safe-area-inset-top));width:auto;gap:5px;padding:6px;transform:translateY(-18px)}.setup-mode .setup-toolbar{transform:none}.setup-toolbar strong{display:none}.setup-toolbar .object-controls{gap:3px;overflow-x:auto}.setup-toolbar .object-controls button{height:30px}.setup-toolbar>#setupDone{padding:7px 10px}.setup-panel{bottom:max(6px,env(safe-area-inset-bottom));width:calc(100% - 12px)}.setup-drawer-toggle{bottom:max(7px,env(safe-area-inset-bottom));padding:8px 14px}}
+/* Task hut character: replace the frog sprite with the tightly cropped Fucat icon. */
+.task-frog-note{aspect-ratio:116/97;background-image:url("sprites/cat-scholar/characters/Fucat/task.png");background-position:center;background-size:contain;background-repeat:no-repeat}
+/* Travel suitcase replaces the former frog hat hotspot in the house. */
+.world .travel-suitcase{position:absolute;z-index:4;left:7%;top:65%;width:18%;height:auto;aspect-ratio:1;padding:0;border:0;background:transparent url("sprites/cat-scholar/object/travel_suitcase.png") center/contain no-repeat;filter:drop-shadow(0 5px 4px #28321f55);cursor:pointer}
+.world .travel-suitcase:hover,.world .travel-suitcase:focus-visible{outline:none;filter:drop-shadow(0 0 7px #fff2a5) drop-shadow(0 5px 4px #28321f55)}
+
+/* 场景固定 TAG：数字越大越靠前；UI 使用 7 以上的独立层级。 */
+.world-bg,.vignette,.time-tint{z-index:0}.world-bg{pointer-events:none}
+.placed-objects-door{z-index:-1}
+.garden-scene .placed-objects-door{clip-path:polygon(70.7% 35.5%,70.7% 29%,70.3% 24%,71.2% 22.9%,74.4% 21.9%,76.5% 21.3%,78.7% 21.6%,80% 22.7%,81.2% 24.9%,81.25% 37.5%)}
+.setup-mode .placed-objects-door{clip-path:none}
+.setup-mode .placed-objects-door.editing-selected{z-index:6}
+.world.garden-scene{background:#403b2d}
+.placed-objects-back{z-index:1}
+.character-layer{z-index:2}
+.placed-objects-front,.clover-field{z-index:3}
+.bubble{z-index:4}
+.setup-mode .placed-objects{pointer-events:none}
+.setup-mode .placed-object{pointer-events:auto}
+
+/* 猫草鱼：原创主粮作物、HUD 库存与菜单切换。 */
+.clover-field.catfish-mode button{width:clamp(27px,4.8vh,46px);height:clamp(57px,10vh,96px);background-image:url("sprites/cat-scholar/object/cat_grass_fish.png");background-position:center bottom;background-repeat:no-repeat;background-size:contain;filter:drop-shadow(0 3px 2px #38512666)}
+.crop-setting{position:relative;margin:0 0 11px;padding:12px;border:1px solid #d8c99f;border-radius:14px;background:#f4edda}
+.crop-setting>small{display:block;margin-bottom:8px;color:#85785f;font-size:10px;font-weight:800;letter-spacing:.12em}
+.crop-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.crop-options button{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:8px;min-width:0;padding:8px;border:2px solid transparent;border-radius:12px;background:#fffaf0;color:#615d49;text-align:left}
+.crop-options button.selected{border-color:#789552;background:#f6f8e8;box-shadow:0 3px 0 #607942}
+.crop-options img{width:42px;height:48px;object-fit:contain}
+.crop-options span,.crop-options b,.crop-options i{display:block;min-width:0}
+.crop-options b{font-size:12px}.crop-options i{margin-top:3px;color:#90836b;font-size:9px;font-style:normal;line-height:1.35}
+.crop-setting>p{margin:9px 1px 0;color:#6e7657;font-size:10px;font-weight:700;text-align:center}
+.save-tools{position:relative;margin:0 0 11px;padding:11px 12px;border:1px solid #d8c99f;border-radius:14px;background:#f4edda}.save-tools>small{display:block;margin-bottom:8px;color:#85785f;font-size:10px;font-weight:800;letter-spacing:.12em}.save-tools>div{display:grid;grid-template-columns:1fr 1fr;gap:8px}.save-tools button{padding:10px;border:1px solid #cbbd98;border-radius:11px;background:#fffaf0;color:#64734f;font-weight:800}.save-tools button:hover,.save-tools button:focus-visible{outline:2px solid #91a66f;background:#fffdf7}
+@media(max-width:520px){.hud{left:10px;right:10px;gap:5px}.hud-money{padding:6px 8px}.crop-options{grid-template-columns:1fr}.crop-options button{grid-template-columns:38px 1fr}.crop-options img{width:36px;height:40px}}
+
+/* 单一资源主题：所有经济相关位置复用当前主题的小图标。 */
+.focus-resource{position:absolute;width:28px!important;height:28px!important;object-fit:contain;opacity:.78;filter:drop-shadow(0 2px 2px #4f5d3444);animation:focusLeaf 2.6s ease-in-out infinite}
+.focus-resource.leaf-left{left:18%;top:43%;transform:rotate(-20deg)}
+.focus-resource.leaf-right{right:18%;top:27%;transform:rotate(18deg);animation-delay:-1.2s}
+.resource-price{display:flex!important;align-items:center;justify-content:center;gap:4px}
+.goods-grid .resource-price img{display:block;width:19px;height:19px;object-fit:contain}
+
+/* Original icon presentation: no legacy shop trays, and never clip item copy. */
+.shop-tray,
+.purchase-tray{
+  background:none!important;
+}
+.shop-grid .shop-item{
+  grid-template-columns:minmax(72px,82px) minmax(0,1fr);
+  min-height:100px;
+}
+.shop-item b,
+.shop-item small{
+  min-width:0;
+  overflow:visible;
+  text-overflow:clip;
+  white-space:normal;
+  word-break:keep-all;
+  overflow-wrap:normal;
+}
+.shop-item b{
+  line-height:1.35;
+}
+.shop-item small{
+  line-height:1.45;
+  letter-spacing:0;
+}
+@media(max-width:520px){
+  .shop-grid{
+    grid-template-columns:1fr!important;
+  }
+  .shop-grid .shop-item{
+    grid-template-columns:76px minmax(0,1fr);
+  }
+  .shop-tray{
+    width:76px;
+  }
+  .shop-tray img{
+    width:64px!important;
+    height:64px!important;
+  }
+}
+#purchasePrice{display:flex;align-items:center;gap:6px}
+#purchasePrice img,.inline-resource-icon{display:inline-block;width:20px;height:20px;object-fit:contain;vertical-align:middle}
+#travelCost{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.mail-reward img{filter:drop-shadow(0 2px 1px #58633e44)}
+@media(max-width:520px){.hud-money{padding:6px 9px}.hud-money b{font-size:20px}.focus-resource{width:24px!important;height:24px!important}}
+.placed-object>.object-image{height:var(--object-height,auto);object-fit:fill}
+.candle-light{display:none!important}
+.home-evening-windows{display:none;position:absolute;z-index:1;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 0 9px #6fa8d066)}
+.time-evening:not(.garden-scene) .home-evening-windows{display:block}
+.garden-evening-sky{display:none;position:absolute;z-index:1;inset:0;width:100%;height:100%;pointer-events:none}
+.time-evening.garden-scene .garden-evening-sky{display:block;width:150%;max-width:none;transform:translateX(var(--pan-x));filter:drop-shadow(0 0 7px #d9dcaa44)}
+.time-evening .placed-object{filter:brightness(.7) saturate(.82) drop-shadow(0 5px 4px #17202a66)}
+.time-evening .placed-object:has(>.object-image[src$="garden_door_lamp.png"]),.time-evening .placed-object:has(>.object-image[src$="garden_hut_window.png"]){filter:brightness(.96) saturate(.92) drop-shadow(0 0 5px #ffe39c) drop-shadow(0 0 13px #e9ad55aa)}
+.time-evening .placed-object:has(>.object-image[src$="garden_door_lamp.png"]):before,.time-evening .placed-object:has(>.object-image[src$="garden_hut_window.png"]):before{content:"";position:absolute;z-index:-1;left:50%;top:58%;width:180%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#ffd98548 0,#eeb75d24 38%,transparent 72%);pointer-events:none}
+.time-evening .placed-object:has(>.object-image[src$="garden_hut_window.png"]):before{top:54%;width:135%;background:radial-gradient(ellipse,#ffe6a750 0,#e7b75d22 48%,transparent 74%)}
+.time-evening .placed-object>.object-image[src$="garden_hut_window.png"]{content:url("sprites/cat-scholar/object/garden_hut_window_evening.png")}
+.soil-resize-handle{display:none;position:absolute;z-index:4;width:18px;height:18px;transform:translate(-50%,-50%);border:2px solid #fff8dc;border-radius:50%;background:#738d50;box-shadow:0 2px 6px #28351e88;touch-action:none}.setup-mode .placed-object.object-soil.selected .soil-resize-handle,.setup-mode .placed-object.object-door.selected .soil-resize-handle{display:block;pointer-events:auto}.soil-resize-handle.nw,.soil-resize-handle.se{cursor:nwse-resize}.soil-resize-handle.ne,.soil-resize-handle.sw{cursor:nesw-resize}.soil-mode-switch{display:none;position:absolute;z-index:5;left:50%;top:-38px;transform:translateX(-50%);align-items:center;gap:2px;padding:3px;border:2px solid #fff8dc;border-radius:999px;background:#f6edd8e8;box-shadow:0 3px 9px #28351e55;font-style:normal;white-space:nowrap}.setup-mode .placed-object.object-soil.selected .soil-mode-switch,.setup-mode .placed-object.object-door.selected .soil-mode-switch{display:flex;pointer-events:auto}.soil-mode-switch b{min-width:38px;padding:4px 7px;border-radius:999px;color:#667258;font-size:10px;font-weight:800;cursor:pointer}.soil-mode-switch b.active{background:#6f8b52;color:#fff}
+.object-controls button[data-soil-resize-mode].active{border-color:#6f8b52;background:#6f8b52;color:#fff;box-shadow:inset 0 0 0 1px #fff8dc}
+.setup-toolbar .object-controls{overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}.setup-toolbar>#setupDone{flex-shrink:0}
+
+/* Keep dock artwork and labels on the same visual center line. */
+.dock button{
+  display:grid;
+  grid-template-rows:38px 16px;
+  align-content:center;
+  align-items:center;
+  justify-items:center;
+  padding:3px 0 2px;
+  line-height:1;
+}
+.dock button>img{
+  align-self:center;
+  justify-self:center;
+  display:block;
+  width:34px;
+  height:34px;
+  margin:0!important;
+  object-fit:contain;
+}
+.dock button>span{
+  align-self:center;
+  justify-self:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:16px;
+  line-height:16px;
+  text-align:center;
+  white-space:nowrap;
+}
+
+/* Mail text icons are real text: high contrast, no artwork, exact centering. */
+.mail-modal>header .mail-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  height:59px;
+  margin:0;
+  color:#555846;
+  font-family:"MPlus2c","Microsoft YaHei",sans-serif;
+  font-size:38px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.08em;
+  text-align:center;
+}
+#claimAll,
+.mail-modal .receive-button,
+#sendReply{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0!important;
+  border:0;
+  background:transparent;
+  color:#66704f;
+  font-family:"MPlus2c","Microsoft YaHei",sans-serif;
+  font-weight:700;
+  line-height:1;
+  text-align:center;
+}
+#claimAll{
+  min-width:125px;
+  height:35px;
+  font-size:19px;
+}
+.mail-modal .receive-button{
+  flex:0 0 76px;
+  width:76px;
+  height:35px;
+  font-size:20px;
+}
+#sendReply{
+  flex:0 0 84px;
+  width:84px;
+  height:49px;
+  font-size:24px;
+}
+#claimAll>span,
+.mail-modal .receive-button>span,
+#sendReply>span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  line-height:1;
+  white-space:nowrap;
+}
+#claimAll:disabled{
+  opacity:.4;
+}
+
+/* Use the object-free courtyard consistently on the title screen. */
+.title-screen{
+  background-image:linear-gradient(#cfe0b9aa,#71895755),url("sprites/cat-scholar/background/garden-no-objects.png");
+}
