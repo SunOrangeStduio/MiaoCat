@@ -1,96 +1,304 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><meta name="bingbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><title>妙脆角喵 · 今日任务安排</title><link rel="stylesheet" href="game.css"></head>
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="bingbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <title>妙脆角喵 · 今日任务安排</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+
 <body>
-<div id="game" class="game">
-  <section id="titleScreen" class="title-screen">
-    <div class="title-planner">
-      <div class="title-copy">
-        <span class="title-kicker">MIAO'S DAILY PLAN</span>
-        <h1><span>妙脆角喵</span><strong>今日任务安排</strong></h1>
-        <p>把今天要做的事排好，和妙脆角喵一起完成每一小步。</p>
-        <div class="title-tags" aria-label="任务安排特色"><span>拆分任务</span><span>专注计时</span><span>记录进度</span></div>
-        <button id="startGame" class="wood-button">开始安排</button>
-        <small>今日计划会自动保存</small>
-      </div>
-      <div class="title-visual" aria-hidden="true">
-        <div class="title-board">
-          <span>今日清单</span>
-          <i class="done">整理书桌</i>
-          <i>完成专注</i>
-          <i>给自己一点奖励</i>
+  <div id="game" class="game">
+    <section id="titleScreen" class="title-screen">
+      <div class="title-planner">
+        <div class="title-copy">
+          <span class="title-kicker">MIAO'S DAILY PLAN</span>
+          <h1><span>妙脆角喵</span><strong>今日任务安排</strong></h1>
+          <p>把今天要做的事排好，和妙脆角喵一起完成每一小步。</p>
+          <div class="title-tags" aria-label="任务安排特色"><span>拆分任务</span><span>专注计时</span><span>记录进度</span></div>
+          <button id="startGame" class="wood-button">开始安排</button>
+          <small>今日计划会自动保存</small>
         </div>
-        <div class="title-cat sprite"></div>
-        <div class="title-pencil"></div>
+        <div class="title-visual" aria-hidden="true">
+          <div class="title-board">
+            <span>今日清单</span>
+            <i class="done">整理书桌</i>
+            <i>完成专注</i>
+            <i>给自己一点奖励</i>
+          </div>
+          <div class="title-cat sprite"></div>
+          <div class="title-pencil"></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="world" class="world hidden">
-    <div id="placedObjectsDoor" class="placed-objects placed-objects-door" data-layer-tag="-1" aria-label="门洞后的木门"></div>
-    <img id="worldBg" class="world-bg" alt="游戏场景">
-    <img class="home-evening-windows" src="sprites/cat-scholar/background/house-evening-windows.png" alt="" aria-hidden="true">
-    <img class="garden-evening-sky" src="sprites/cat-scholar/background/garden-evening-sky.png" alt="" aria-hidden="true">
-    <div class="vignette"></div>
-    <div id="timeTint" class="time-tint"></div>
-    <div id="sceneTransition" class="scene-transition" aria-hidden="true"><i></i><i></i><i></i></div>
-    <span id="candleLight" class="hidden" aria-hidden="true"></span>
-    <header class="hud">
-      <div class="day-chip"><b id="dayText">第 1 天</b><span id="clockText">早晨</span></div>
-      <div class="hud-money"><img data-resource-icon src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt="猫草鱼"><b id="money">0</b></div>
-    </header>
-    <button id="setupToggle" class="setup-toggle" type="button" aria-pressed="false"><span>布置</span></button>
-    <div id="placedObjects" class="placed-objects placed-objects-back" data-layer-tag="1" aria-label="背景布置物体"></div>
-    <div id="characterLayer" class="character-layer" data-layer-tag="2" aria-label="场景人物">
-      <button id="frogActor" class="actor frog-actor sprite home-prepare" aria-label="和妙脆角喵说话"></button>
-      <button id="visitorActor" class="actor visitor-actor sprite snail-sprite hidden" data-open="visitor" aria-label="与庭院访客交谈"></button>
-      <div id="characterCopies"></div>
-    </div>
-    <div id="placedObjectsFront" class="placed-objects placed-objects-front" data-layer-tag="3" aria-label="前景布置物体"></div>
-    <div id="cloverField" class="clover-field hidden" data-layer-tag="3" aria-label="三叶草田"></div>
-    <button class="hotspot desk" data-open="tasks"><span>任务本</span></button>
-    <button id="bubble" class="bubble" data-layer-tag="4">欢迎回家。今天想推进什么？</button>
-    <button id="panLeft" class="pan-control pan-left hidden" aria-label="向左查看">‹</button>
-    <button id="panRight" class="pan-control pan-right hidden" aria-label="向右查看">›</button>
-    <div id="dragHint" class="drag-hint hidden">左右拖动查看庭院</div>
-    <div id="setupToolbar" class="setup-toolbar" aria-label="所选物体调整">
-      <strong><span>设定模式</span><b id="setupSceneLabel">房屋</b></strong>
-      <div id="objectControls" class="object-controls">
-        <button type="button" data-object-action="smaller" aria-label="缩小">－</button>
-        <button type="button" data-object-action="larger" aria-label="放大">＋</button>
-        <button type="button" data-object-action="rotate-left" aria-label="向左旋转">↶</button>
-        <button type="button" data-object-action="rotate-right" aria-label="向右旋转">↷</button>
-        <button type="button" data-object-action="flip" aria-label="水平翻转">⇋</button>
-        <button type="button" data-object-action="copy" aria-label="复制所选对象">复制</button>
-        <button type="button" class="danger" data-object-action="delete">删除</button>
+    <section id="world" class="world hidden">
+      <div id="placedObjectsDoor" class="placed-objects placed-objects-door" data-layer-tag="-1" aria-label="门洞后的木门">
       </div>
-      <button id="setupDone" type="button">完成</button>
-    </div>
-    <aside id="setupPanel" class="setup-panel" aria-label="场景物体列表">
-      <header><div><b>选择物体</b><span>点击后自动收起</span></div><button id="setupCollapse" type="button">收起</button></header>
-      <div id="objectPalette" class="object-palette"></div>
-      <p id="setupHint">从下方选择物体，再拖动到想要的位置。</p>
-    </aside>
-    <button id="setupDrawerToggle" class="setup-drawer-toggle" type="button" aria-expanded="false">＋ 物体</button>
-    <div class="dock-trigger" aria-hidden="true"><span>⌃</span></div>
-    <nav class="dock">
-      <button id="homeDockButton" data-scene="home"><img src="sprites/cat-scholar/original-icons/home.png" alt=""><span>小屋</span></button>
-      <button id="gardenDockButton" data-scene="garden"><img src="sprites/cat-scholar/original-icons/garden.png" alt=""><span>庭院</span><i id="harvestDot"></i></button>
-      <button data-open="shop"><img src="sprites/cat-scholar/original-icons/shop.png" alt=""><span>商店</span></button>
-      <button id="taskTravelDock" data-open="tasks"><img id="taskTravelIcon" src="sprites/cat-scholar/original-icons/task.png" alt=""><span id="taskTravelLabel">任务</span></button>
-      <button data-open="album"><img src="sprites/cat-scholar/original-icons/album.png" alt=""><span>相册</span><i id="photoDot"></i></button>
-      <button data-open="menu"><img src="sprites/cat-scholar/original-icons/menu.png" alt=""><span>菜单</span></button>
-    </nav>
-  </section>
+      <img id="worldBg" class="world-bg" alt="游戏场景">
+      <img class="home-evening-windows" src="sprites/cat-scholar/background/house-evening-windows.png" alt=""
+        aria-hidden="true">
+      <img class="garden-evening-sky" src="sprites/cat-scholar/background/garden-evening-sky.png" alt=""
+        aria-hidden="true">
+      <div class="vignette"></div>
+      <div id="timeTint" class="time-tint"></div>
+      <div id="sceneTransition" class="scene-transition" aria-hidden="true"><i></i><i></i><i></i></div>
+      <span id="candleLight" class="hidden" aria-hidden="true"></span>
+      <header class="hud">
+        <div class="day-chip"><b id="dayText">第 1 天</b><span id="clockText">早晨</span></div>
+        <div class="hud-money"><img data-resource-icon src="sprites/cat-scholar/object/cat_grass_fish_icon.png"
+            alt="猫草鱼"><b id="money">0</b></div>
+      </header>
+      <button id="setupToggle" class="setup-toggle" type="button" aria-pressed="false"><span>布置</span></button>
+      <div id="placedObjects" class="placed-objects placed-objects-back" data-layer-tag="1" aria-label="背景布置物体"></div>
+      <div id="characterLayer" class="character-layer" data-layer-tag="2" aria-label="场景人物">
+        <button id="frogActor" class="actor frog-actor sprite home-chair" aria-label="和妙脆角喵说话"></button>
+        <button id="visitorActor" class="actor visitor-actor sprite snail-sprite hidden" data-open="visitor"
+          aria-label="与庭院访客交谈"></button>
+        <div id="characterCopies"></div>
+      </div>
+      <div id="placedObjectsFront" class="placed-objects placed-objects-front" data-layer-tag="3" aria-label="前景布置物体">
+      </div>
+      <div id="cloverField" class="clover-field hidden" data-layer-tag="3" aria-label="三叶草田"></div>
+      <button class="hotspot desk" data-open="tasks"><span>任务本</span></button>
+      <button id="bubble" class="bubble" data-layer-tag="4">欢迎回家。今天想推进什么？</button>
+      <button id="panLeft" class="pan-control pan-left hidden" aria-label="向左查看">‹</button>
+      <button id="panRight" class="pan-control pan-right hidden" aria-label="向右查看">›</button>
+      <div id="dragHint" class="drag-hint hidden">左右拖动查看庭院</div>
+      <div id="setupToolbar" class="setup-toolbar" aria-label="所选物体调整">
+        <strong><span>设定模式</span><b id="setupSceneLabel">房屋</b></strong>
+        <div id="objectControls" class="object-controls">
+          <button type="button" data-object-action="smaller" aria-label="缩小">－</button>
+          <button type="button" data-object-action="larger" aria-label="放大">＋</button>
+          <button type="button" data-object-action="rotate-left" aria-label="向左旋转">↶</button>
+          <button type="button" data-object-action="rotate-right" aria-label="向右旋转">↷</button>
+          <button type="button" data-object-action="flip" aria-label="水平翻转">⇋</button>
+          <button type="button" data-object-action="copy" aria-label="复制所选对象">复制</button>
+          <button type="button" class="danger" data-object-action="delete">删除</button>
+        </div>
+        <button id="setupDone" type="button">完成</button>
+      </div>
+      <aside id="setupPanel" class="setup-panel" aria-label="场景物体列表">
+        <header>
+          <div><b>选择物体</b><span>点击后自动收起</span></div><button id="setupCollapse" type="button">收起</button>
+        </header>
+        <div id="objectPalette" class="object-palette"></div>
+        <p id="setupHint">从下方选择物体，再拖动到想要的位置。</p>
+      </aside>
+      <button id="setupDrawerToggle" class="setup-drawer-toggle" type="button" aria-expanded="false">＋ 物体</button>
+      <div class="dock-trigger" aria-hidden="true"><span>⌃</span></div>
+      <nav class="dock">
+        <button id="homeDockButton" data-scene="home"><img src="sprites/cat-scholar/original-icons/home.png"
+            alt=""><span>小屋</span></button>
+        <button id="gardenDockButton" data-scene="garden"><img src="sprites/cat-scholar/original-icons/garden.png"
+            alt=""><span>庭院</span><i id="harvestDot"></i></button>
+        <button data-open="shop"><img src="sprites/cat-scholar/original-icons/shop.png" alt=""><span>商店</span></button>
+        <button id="taskTravelDock" data-open="tasks"><img id="taskTravelIcon"
+            src="sprites/cat-scholar/original-icons/task.png" alt=""><span id="taskTravelLabel">任务</span></button>
+        <button data-open="album"><img src="sprites/cat-scholar/original-icons/album.png" alt=""><span>相册</span><i
+            id="photoDot"></i></button>
+        <button data-open="menu"><img src="sprites/cat-scholar/original-icons/menu.png" alt=""><span>菜单</span></button>
+      </nav>
+    </section>
 
-  <div id="modalShade" class="modal-shade hidden"></div>
-  <section id="tasksModal" class="game-modal tasks-modal hidden"><button class="close">×</button><header><small>妙脆角喵的今日计划</small><h2>任务小屋</h2></header><form id="taskForm" class="task-compose"><div class="task-frog-note" aria-hidden="true"></div><div class="task-note-input"><label for="taskInput">今天想和妙脆角喵一起完成什么？</label><input id="taskInput" maxlength="36" required placeholder="例如：读完一章数学书"></div><div class="goal-picker"><span>选择旅程步数</span><input id="taskGoal" type="hidden" value="3"><div><button type="button" data-goal="1">1</button><button type="button" data-goal="2">2</button><button type="button" class="selected" data-goal="3">3</button><button type="button" data-goal="5">5</button></div></div><button class="pin-task">贴到计划板</button></form><div id="taskList" class="paper-list task-board"></div><p id="taskEmpty" class="empty">计划板还是空的，先贴上一张今日便签吧。</p></section>
-  <section id="focusModal" class="game-modal focus-modal hidden"><button class="close">×</button><header class="focus-header"><small>妙脆角喵陪伴旅程</small><h2 id="focusName">任务</h2></header><div class="focus-scene"><img class="focus-resource leaf-left" data-resource-icon src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""><div class="focus-frog sprite reading-sprite" role="img" aria-label="读书的妙脆角喵"></div><img class="focus-resource leaf-right" data-resource-icon src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""></div><div class="focus-clock"><small>这一小步还剩</small><div id="timer">25:00</div></div><div class="time-pills" aria-label="选择陪伴时间"><button data-min="1">1 分钟</button><button class="active" data-min="25">25 分钟</button><button data-min="45">45 分钟</button></div><p class="focus-promise">安静完成这一段，妙脆角喵会陪你一起向前。</p><button id="timerButton" class="wood-button">开始专注</button><button id="instantFocus" class="link-button">测试：立即完成</button></section>
-  <section id="bagModal" class="game-modal travel-modal hidden"><button class="close">×</button><header><small>下一段远行</small><h2>旅行</h2></header><div class="travel-card"><div class="travel-emblem"><img src="sprites/cat-scholar/original-icons/garden.png" alt=""><span>出发准备</span></div><div class="travel-content"><p id="tripState">妙脆角喵还在家。</p><div class="travel-facts"><div><small>预计时间</small><b id="travelTimePreview">约 15 分钟</b></div><div><small>出发花费</small><b id="travelCost">3 份猫草鱼主粮</b></div></div><div id="travelLoadout" class="travel-loadout"></div><p id="travelEffectPreview" class="travel-reward">不带额外行李，也可以轻装出发。</p><button id="tripButton" class="wood-button">需要 3 份主粮出发</button><button id="instantReturn" class="link-button hidden">测试：立即归来</button></div></div></section>
-  <section id="shopModal" class="game-modal shop-modal hidden"><button class="close">×</button><header><small>庭院小铺</small><h2>商店</h2></header><div class="shop-shelf-head"><span id="shopCategory">普通商品</span><b><img data-resource-icon src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""> <i id="shopMoney">0</i></b></div><div id="shopGrid" class="goods-grid shop-grid"></div><nav id="shopPager" class="shop-pager" aria-label="商店分页"><button id="shopPrev">‹ 上一页</button><span id="shopPageText">1 / 3</span><button id="shopNext">下一页 ›</button></nav><p id="inventoryText" class="shop-inventory">持有：暂无商品</p></section>
-  <section id="purchaseConfirmModal" class="game-modal purchase-modal hidden"><button class="close">×</button><header><small>确认购买</small><h2 id="purchaseName">商品</h2></header><div class="purchase-preview"><div id="purchaseTray" class="purchase-tray"><img id="purchaseImage" alt="商品"></div><div><p id="purchaseDescription"></p><b id="purchasePrice"><img data-resource-icon src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""><span id="purchasePriceValue">0</span></b><small id="purchaseOwned">目前持有 0 件</small></div></div><p class="purchase-question">确定要购买这件商品吗？</p><div class="purchase-actions"><button id="purchaseCancel">再看看</button><button id="purchaseConfirm" class="wood-button">确定购买</button></div></section>
-  <section id="mailModal" class="game-modal mail-modal hidden"><button class="close">×</button><header><small>朋友与远方</small><h2 class="mail-title">邮件</h2></header><div class="mail-toolbar"><span id="mailCount">0 封未领取</span><button id="claimAll" aria-label="全部领取"><span>全部领取</span></button></div><div id="mailList" class="mail-list"></div><p id="mailEmpty" class="empty">现在没有新邮件。</p><div class="mail-reply"><p><b>给旅行中的妙脆角喵寄一声问候</b><span id="replyStatus">妙脆角喵在家，出发后才能发送</span></p><button id="sendReply"><span>发送</span></button></div></section>
-  <section id="visitorModal" class="game-modal visitor-modal hidden"><button class="close">×</button><header><small>庭院来客</small><h2 id="visitorName">虫虫猫</h2></header><div class="visitor-note"><div id="visitorPreview" class="visitor-preview sprite snail-sprite" role="img" aria-label="庭院访客"></div><div><p id="visitorTalk">“慢慢安排，也会完成今天的任务。”</p><span id="visitorPreference">喜欢：普通便当</span></div></div><div class="visitor-actions"><button id="visitorGreet">聊聊天</button><button id="visitorTreat" class="wood-button">用喜欢的道具招待</button></div><p id="visitorResult" class="visitor-result">每位访客每天只能领取一次回礼。</p></section>
-  <section id="albumModal" class="game-modal wide-modal hidden"><button class="close">×</button><header><small>努力留下的风景</small><h2>旅行相册</h2></header><div id="albumGrid" class="album-grid"></div><p id="albumEmpty" class="empty">相册还是空的，让妙脆角喵去旅行吧。</p><nav id="albumPager" class="album-pager hidden" aria-label="相册分页"><button id="albumPrev">‹ 上一页</button><span id="albumPageText">1 / 1</span><button id="albumNext">下一页 ›</button></nav></section>
-  <section id="photoDetailModal" class="game-modal photo-detail-modal hidden"><button class="close">×</button><header><small id="photoDetailRegion">旅行记录</small><h2 id="photoDetailName">景点名称</h2></header><img id="photoDetailImage" class="photo-detail-image" alt="旅行照片"><div class="photo-location"><span id="photoDetailCity">城市</span><b>·</b><span id="photoDetailPlace">地方</span></div><p id="photoDetailText" class="photo-detail-text"></p><button id="backAlbum" class="link-button">← 返回旅行相册</button></section>
-  <section id="menuModal" class="game-modal menu-modal hidden"><button class="close">×</button><header><small>游戏选项</small><h2>菜单</h2></header><div class="crop-setting"><small>资源主题</small><div class="crop-options"><button type="button" data-crop-type="catfish"><img src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""><span><b>猫草鱼</b><i>整套资源 · 旅行省时</i></span></button><button type="button" data-crop-type="clover"><img src="sprites/cat-scholar/original-icons/clover_mature.png" alt=""><span><b>三叶草</b><i>整套资源 · 经典模式</i></span></button></div><p id="cropStatus">当前猫草鱼：0 份</p></div><div class="crop-setting soil-setting"><small>泥土样式</small><div class="crop-options"><button type="button" data-soil-type="old"><img src="sprites/cat-scholar/object/garden_soil.png" alt="旧泥土"><span><b>旧泥土</b><i>仅显示并放置旧泥土</i></span></button><button type="button" data-soil-type="new"><img src="sprites/cat-scholar/object/garden_soil_stump_enclosure.png" alt="新泥土"><span><b>新泥土</b><i>泥土与整圈木桩一体</i></span></button></div><p id="soilStatus">当前：新泥土</p></div><div class="save-tools"><small>游戏存档</small><div><button id="exportSave" type="button">导出存档</button><button id="importSave" type="button">加载存档</button></div><input id="importSaveFile" class="hidden" type="file" accept="application/json,.json"></div><button id="soundToggle" class="menu-row">提示音 <b>开启</b></button><button id="helpButton" class="menu-row">玩法说明 <b>›</b></button><div class="test-tools"><small>原型测试</small><div><button id="advanceTime">下一个时间点</button><button id="advanceDay">下一天</button><button id="unlockAlbum">解锁全部相册</button></div><div class="test-grow"><label for="testGrowCount">庭院立刻生长</label><input id="testGrowCount" type="number" min="0" max="100" value="5" inputmode="numeric"><span>株</span><button id="growNow">生长</button></div><p id="testTimeStatus">第 1 天 · 早晨</p></div><button id="resetGame" class="menu-row danger">重新开始 <b>×</b></button><p id="helpText" class="help hidden">资源主题会统一切换庭院、商店、奖励、礼物和旅行消耗；泥土样式只能选择一种，切换时会删除已放置的另一种泥土。</p></section>
-  <div id="toast" class="toast hidden"></div>
-</div><script src="game.js"></script></body></html>
+    <div id="modalShade" class="modal-shade hidden"></div>
+    <section id="tasksModal" class="game-modal tasks-modal hidden"><button class="close">×</button>
+      <header><small>妙脆角喵的今日计划</small>
+        <h2>任务小屋</h2>
+      </header>
+      <form id="taskForm" class="task-compose">
+        <div class="task-frog-note" aria-hidden="true"></div>
+        <div class="task-note-input"><label for="taskInput">今天想和妙脆角喵一起完成什么？</label><input id="taskInput" maxlength="36"
+            required placeholder="例如：读完一章数学书"></div>
+        <div class="goal-picker"><span>选择旅程步数</span><input id="taskGoal" type="hidden" value="3">
+          <div><button type="button" data-goal="1">1</button><button type="button" data-goal="2">2</button><button
+              type="button" class="selected" data-goal="3">3</button><button type="button" data-goal="5">5</button>
+          </div>
+        </div><button class="pin-task">贴到计划板</button>
+      </form>
+      <div id="taskList" class="paper-list task-board"></div>
+      <p id="taskEmpty" class="empty">计划板还是空的，先贴上一张今日便签吧。</p>
+    </section>
+    <section id="focusModal" class="game-modal focus-modal hidden"><button class="close">×</button>
+      <header class="focus-header"><small>妙脆角喵陪伴旅程</small>
+        <h2 id="focusName">任务</h2>
+      </header>
+      <div class="focus-scene"><img class="focus-resource leaf-left" data-resource-icon
+          src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt="">
+        <div class="focus-frog sprite reading-sprite" role="img" aria-label="读书的妙脆角喵"></div><img
+          class="focus-resource leaf-right" data-resource-icon src="sprites/cat-scholar/object/cat_grass_fish_icon.png"
+          alt="">
+      </div>
+      <div class="focus-clock"><small>这一小步还剩</small>
+        <div id="timer">25:00</div>
+      </div>
+      <div class="time-pills" aria-label="选择陪伴时间"><button data-min="1">1 分钟</button><button class="active"
+          data-min="25">25 分钟</button><button data-min="45">45 分钟</button></div>
+      <p class="focus-promise">安静完成这一段，妙脆角喵会陪你一起向前。</p><button id="timerButton" class="wood-button">开始专注</button><button
+        id="instantFocus" class="link-button">测试：立即完成</button>
+    </section>
+    <section id="bagModal" class="game-modal travel-modal hidden"><button class="close">×</button>
+      <header><small>下一段远行</small>
+        <h2>旅行</h2>
+      </header>
+      <div class="travel-card">
+        <div class="travel-emblem"><img src="sprites/cat-scholar/original-icons/garden.png" alt=""><span>出发准备</span>
+        </div>
+        <div class="travel-content">
+          <p id="tripState">妙脆角喵还在家。</p>
+          <div class="travel-facts">
+            <div><small>预计时间</small><b id="travelTimePreview">约 15 分钟</b></div>
+            <div><small>出发花费</small><b id="travelCost">3 份猫草鱼主粮</b></div>
+          </div>
+          <div id="travelLoadout" class="travel-loadout"></div>
+          <p id="travelEffectPreview" class="travel-reward">不带额外行李，也可以轻装出发。</p><button id="tripButton"
+            class="wood-button">需要 3 份主粮出发</button><button id="instantReturn"
+            class="link-button hidden">测试：立即归来</button>
+        </div>
+      </div>
+    </section>
+    <section id="shopModal" class="game-modal shop-modal hidden"><button class="close">×</button>
+      <header><small>庭院小铺</small>
+        <h2>商店</h2>
+      </header>
+      <div class="shop-shelf-head"><span id="shopCategory">普通商品</span><b><img data-resource-icon
+            src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""> <i id="shopMoney">0</i></b></div>
+      <div id="shopGrid" class="goods-grid shop-grid"></div>
+      <nav id="shopPager" class="shop-pager" aria-label="商店分页"><button id="shopPrev">‹ 上一页</button><span
+          id="shopPageText">1 / 3</span><button id="shopNext">下一页 ›</button></nav>
+      <p id="inventoryText" class="shop-inventory">持有：暂无商品</p>
+    </section>
+    <section id="purchaseConfirmModal" class="game-modal purchase-modal hidden"><button class="close">×</button>
+      <header><small>确认购买</small>
+        <h2 id="purchaseName">商品</h2>
+      </header>
+      <div class="purchase-preview">
+        <div id="purchaseTray" class="purchase-tray"><img id="purchaseImage" alt="商品"></div>
+        <div>
+          <p id="purchaseDescription"></p><b id="purchasePrice"><img data-resource-icon
+              src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""><span
+              id="purchasePriceValue">0</span></b><small id="purchaseOwned">目前持有 0 件</small>
+        </div>
+      </div>
+      <p class="purchase-question">确定要购买这件商品吗？</p>
+      <div class="purchase-actions"><button id="purchaseCancel">再看看</button><button id="purchaseConfirm"
+          class="wood-button">确定购买</button></div>
+    </section>
+    <section id="mailModal" class="game-modal mail-modal hidden"><button class="close">×</button>
+      <header><small>朋友与远方</small>
+        <h2 class="mail-title">邮件</h2>
+      </header>
+      <div class="mail-toolbar"><span id="mailCount">0 封未领取</span><button id="claimAll"
+          aria-label="全部领取"><span>全部领取</span></button></div>
+      <div id="mailList" class="mail-list"></div>
+      <p id="mailEmpty" class="empty">现在没有新邮件。</p>
+      <div class="mail-reply">
+        <p><b>给旅行中的妙脆角喵寄一声问候</b><span id="replyStatus">妙脆角喵在家，出发后才能发送</span></p><button
+          id="sendReply"><span>发送</span></button>
+      </div>
+    </section>
+    <section id="visitorModal" class="game-modal visitor-modal hidden"><button class="close">×</button>
+      <header><small>庭院来客</small>
+        <h2 id="visitorName">虫虫猫</h2>
+      </header>
+      <div class="visitor-note">
+        <div id="visitorPreview" class="visitor-preview sprite snail-sprite" role="img" aria-label="庭院访客"></div>
+        <div>
+          <p id="visitorTalk">“慢慢安排，也会完成今天的任务。”</p><span id="visitorPreference">喜欢：普通便当</span>
+        </div>
+      </div>
+      <div class="visitor-actions"><button id="visitorGreet">聊聊天</button><button id="visitorTreat"
+          class="wood-button">用喜欢的道具招待</button></div>
+      <p id="visitorResult" class="visitor-result">每位访客每天只能领取一次回礼。</p>
+    </section>
+    <section id="albumModal" class="game-modal wide-modal hidden"><button class="close">×</button>
+      <header><small>努力留下的风景</small>
+        <h2>旅行相册</h2>
+      </header>
+      <div id="albumGrid" class="album-grid"></div>
+      <p id="albumEmpty" class="empty">相册还是空的，让妙脆角喵去旅行吧。</p>
+      <nav id="albumPager" class="album-pager hidden" aria-label="相册分页"><button id="albumPrev">‹ 上一页</button><span
+          id="albumPageText">1 / 1</span><button id="albumNext">下一页 ›</button></nav>
+    </section>
+    <section id="photoDetailModal" class="game-modal photo-detail-modal hidden"><button class="close">×</button>
+      <header><small id="photoDetailRegion">旅行记录</small>
+        <h2 id="photoDetailName">景点名称</h2>
+      </header><img id="photoDetailImage" class="photo-detail-image" alt="旅行照片">
+      <div class="photo-location"><span id="photoDetailCity">城市</span><b>·</b><span id="photoDetailPlace">地方</span>
+      </div>
+      <p id="photoDetailText" class="photo-detail-text"></p><button id="backAlbum" class="link-button">← 返回旅行相册</button>
+    </section>
+    <section id="menuModal" class="game-modal menu-modal hidden"><button class="close">×</button>
+      <header><small>游戏选项</small>
+        <h2>菜单</h2>
+      </header>
+      <div class="crop-setting"><small>资源主题</small>
+        <div class="crop-options"><button type="button" data-crop-type="catfish"><img
+              src="sprites/cat-scholar/object/cat_grass_fish_icon.png" alt=""><span><b>猫草鱼</b><i>整套资源 ·
+                旅行省时</i></span></button><button type="button" data-crop-type="clover"><img
+              src="sprites/cat-scholar/original-icons/clover_mature.png" alt=""><span><b>三叶草</b><i>整套资源 ·
+                经典模式</i></span></button></div>
+        <p id="cropStatus">当前猫草鱼：0 份</p>
+      </div>
+      <div class="crop-setting soil-setting"><small>泥土样式</small>
+        <div class="crop-options"><button type="button" data-soil-type="old"><img
+              src="sprites/cat-scholar/object/garden_soil.png"
+              alt="旧泥土"><span><b>旧泥土</b><i>仅显示并放置旧泥土</i></span></button><button type="button" data-soil-type="new"><img
+              src="sprites/cat-scholar/object/garden_soil_stump_enclosure.png"
+              alt="新泥土"><span><b>新泥土</b><i>泥土与整圈木桩一体</i></span></button></div>
+        <p id="soilStatus">当前：新泥土</p>
+      </div>
+      <div class="save-tools"><small>游戏存档</small>
+        <div><button id="exportSave" type="button">导出存档</button><button id="importSave" type="button">加载存档</button>
+        </div><input id="importSaveFile" class="hidden" type="file" accept="application/json,.json">
+      </div><button id="soundToggle" class="menu-row">背景音乐 <b>开启</b></button><button id="helpButton"
+        class="menu-row">玩法说明 <b>›</b></button>
+      <div class="test-tools"><small>原型测试</small>
+        <div><button id="advanceTime">下一个时间点</button><button id="advanceDay">下一天</button><button
+            id="unlockAlbum">解锁全部相册</button></div>
+        <div class="test-grow"><label for="testGrowCount">庭院立刻生长</label><input id="testGrowCount" type="number" min="0"
+            max="100" value="5" inputmode="numeric"><span>株</span><button id="growNow">生长</button></div>
+        <p id="testTimeStatus">第 1 天 · 早晨</p>
+      </div><button id="resetGame" class="menu-row danger">重新开始 <b>×</b></button>
+      <p id="helpText" class="help hidden">资源主题会统一切换庭院、商店、奖励、礼物和旅行消耗；泥土样式只能选择一种，切换时会删除已放置的另一种泥土。</p>
+    </section>
+    <div id="toast" class="toast hidden"></div>
+  </div>
+  <script src="init-data.js"></script>
+  <script>
+    (async function startGame() {
+      const saveKey = 'frog-game-v3';
+
+      if (localStorage.getItem(saveKey) === null) {
+        try {
+          let payload;
+          if (location.protocol === 'file:') {
+            payload = window.INIT_GAME_SAVE;
+          } else {
+            const response = await fetch('init.json', { cache: 'no-store' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            payload = await response.json();
+          }
+          const initialState = payload?.format === 'frog-game-v3-save' ? payload.state : payload;
+          if (!initialState || typeof initialState !== 'object' || Array.isArray(initialState)) {
+            throw new Error('init.json does not contain a valid game state');
+          }
+
+          localStorage.setItem(saveKey, JSON.stringify(initialState));
+        } catch (error) {
+          console.warn('Unable to load init.json; using the built-in defaults.', error);
+        }
+      }
+
+      const gameScript = document.createElement('script');
+      gameScript.src = 'game.js';
+      document.body.append(gameScript);
+    })();
+  </script>
+</body>
+
+</html>
