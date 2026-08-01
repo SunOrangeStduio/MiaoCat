@@ -1,0 +1,319 @@
+﻿{
+    "schemaVersion":  3,
+    "documentation":  "目录即权限与场景。depthAnchorY 是忽略透明留白后的落地点比例。",
+    "items":  {
+                  "value":  [
+                                {
+                                    "id":  "cat_post",
+                                    "name":  "猫咪邮箱",
+                                    "image":  "object/garden/cat_post.webp",
+                                    "size":  120,
+                                    "layerTag":  2,
+                                    "depthAnchorY":  0.91,
+                                    "assetGroup":  "object",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "功能",
+                                                 "庭院"
+                                             ]
+                                },
+                                {
+                                    "id":  "travel_suitcase",
+                                    "name":  "旅行行李箱",
+                                    "image":  "object/home/travel_suitcase.webp",
+                                    "size":  120,
+                                    "layerTag":  2,
+                                    "depthAnchorY":  0.88,
+                                    "assetGroup":  "object",
+                                    "scene":  "home",
+                                    "tags":  [
+                                                 "功能",
+                                                 "室内"
+                                             ]
+                                },
+                                {
+                                    "id":  "kettle",
+                                    "name":  "浇水壶",
+                                    "image":  "object/garden/kettle.webp",
+                                    "size":  105,
+                                    "layerTag":  2,
+                                    "depthAnchorY":  0.86,
+                                    "assetGroup":  "object",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "道具",
+                                                 "庭院"
+                                             ]
+                                },
+                                {
+                                    "id":  "courtyard_rug",
+                                    "name":  "庭院入口地毯",
+                                    "image":  "map/home/courtyard_rug.webp",
+                                    "size":  17,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  1,
+                                    "assetGroup":  "map",
+                                    "scene":  "home",
+                                    "tags":  [
+                                                 "地面"
+                                             ]
+                                },
+                                {
+                                    "id":  "tea_table_set",
+                                    "name":  "圆桌茶具组合",
+                                    "image":  "object/home/tea_table_set.webp",
+                                    "size":  23.05,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  2,
+                                    "depthAnchorY":  0.82,
+                                    "assetGroup":  "object",
+                                    "scene":  "home",
+                                    "tags":  [
+                                                 "家具",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "floor_cushion_blue",
+                                    "name":  "蓝色坐垫",
+                                    "image":  "object/home/floor_cushion_blue.webp",
+                                    "size":  9.31,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  2,
+                                    "depthAnchorY":  0.72,
+                                    "assetGroup":  "object",
+                                    "scene":  "home",
+                                    "tags":  [
+                                                 "家具",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "floor_cushion_yellow",
+                                    "name":  "黄色坐垫",
+                                    "image":  "object/home/floor_cushion_yellow.webp",
+                                    "size":  6.51,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  2,
+                                    "depthAnchorY":  0.72,
+                                    "assetGroup":  "object",
+                                    "scene":  "home",
+                                    "tags":  [
+                                                 "家具",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_door_lamp",
+                                    "name":  "门口吊灯",
+                                    "image":  "map/garden/garden_door_lamp.png",
+                                    "size":  48,
+                                    "layerTag":  1,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "建筑"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_soil",
+                                    "name":  "自然种植泥土",
+                                    "image":  "map/garden/garden_soil.webp",
+                                    "size":  40,
+                                    "sizeUnit":  "vh",
+                                    "height":  21.91,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  1,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "地面",
+                                                 "农田"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_stump_short_thick",
+                                    "name":  "矮粗木桩",
+                                    "image":  "map/garden/garden_stump_short_thick.png",
+                                    "size":  3.8,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "围栏",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_stump_short_thin",
+                                    "name":  "矮细木桩",
+                                    "image":  "map/garden/garden_stump_short_thin.png",
+                                    "size":  2,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "围栏",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_stump_tall_thick",
+                                    "name":  "高粗木桩",
+                                    "image":  "map/garden/garden_stump_tall_thick.png",
+                                    "size":  3.4,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "围栏",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_stump_tall_thin",
+                                    "name":  "高细木桩",
+                                    "image":  "map/garden/garden_stump_tall_thin.png",
+                                    "size":  1.8,
+                                    "sizeUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "围栏",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_door",
+                                    "name":  "小屋木门",
+                                    "image":  "map/garden/garden_door.png",
+                                    "size":  8,
+                                    "sizeUnit":  "vh",
+                                    "height":  15.82,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  -1,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "建筑"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_plant_1",
+                                    "name":  "庭院植物 1",
+                                    "image":  "map/garden/garden_plant_1.webp",
+                                    "size":  20.17,
+                                    "sizeUnit":  "vh",
+                                    "height":  13.67,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "植物",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_plant_2",
+                                    "name":  "庭院植物 2",
+                                    "image":  "map/garden/garden_plant_2.webp",
+                                    "size":  51.42,
+                                    "sizeUnit":  "vh",
+                                    "height":  32.55,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "植物",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_plant_3",
+                                    "name":  "庭院植物 3",
+                                    "image":  "map/garden/garden_plant_3.webp",
+                                    "size":  25.71,
+                                    "sizeUnit":  "vh",
+                                    "height":  16.93,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "植物",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_plant_4",
+                                    "name":  "庭院植物 4",
+                                    "image":  "map/garden/garden_plant_4.webp",
+                                    "size":  39.55,
+                                    "sizeUnit":  "vh",
+                                    "height":  29.95,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "植物",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_plant_5",
+                                    "name":  "庭院植物 5",
+                                    "image":  "map/garden/garden_plant_5.webp",
+                                    "size":  25.71,
+                                    "sizeUnit":  "vh",
+                                    "height":  23.44,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  2,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "植物",
+                                                 "可遮挡"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_hut_window",
+                                    "name":  "庭院小木屋窗",
+                                    "image":  "map/garden/garden_hut_window.webp",
+                                    "size":  10.68,
+                                    "sizeUnit":  "vh",
+                                    "height":  9.05,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  1,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "建筑"
+                                             ]
+                                },
+                                {
+                                    "id":  "garden_soil_stump_enclosure",
+                                    "name":  "完整泥土木桩围地",
+                                    "image":  "map/garden/garden_soil_stump_enclosure.webp",
+                                    "size":  75.12,
+                                    "sizeUnit":  "vh",
+                                    "height":  44.60,
+                                    "heightUnit":  "vh",
+                                    "layerTag":  1,
+                                    "assetGroup":  "map",
+                                    "scene":  "garden",
+                                    "tags":  [
+                                                 "地面",
+                                                 "农田"
+                                             ]
+                                }
+                            ],
+                  "Count":  21
+              }
+}
